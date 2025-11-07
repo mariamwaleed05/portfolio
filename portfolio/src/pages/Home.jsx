@@ -6,6 +6,8 @@ import BackToTop from '../components/BackToTop';
 import TextMeButton from '../components/TextMeButton';
 import HeroSection from '../components/HeroSection';
 import ToggleButtons from '../components/ToggleButtons';
+import Button from '../common/Button';
+import WhoAmI from '../components/WhoAmI';
 
 
 const Home = () => {
@@ -23,10 +25,15 @@ const Home = () => {
      <div className="main-wrapper">
 <ToggleButtons/>
 <HeroSection/>
+<Button title="Let’s get in touch" className="herobutton" />
 <LogosTrack/>
+<WhoAmI/>
+
+
+
 <BackToTop/>
 <TextMeButton/>
-    </div> 
+</div> 
 
 
 </>

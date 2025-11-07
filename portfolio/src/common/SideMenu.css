@@ -1,21 +1,19 @@
 aside.closed {
-  width: 60px; /* or your collapsed width */
+  width: 60px;
 }
 
 .main-wrapper.sidebar-closed {
-  margin-left: 60px; /* matches collapsed sidebar */
+  margin-left: 60px; 
   width: calc(100% - 60px);
 }
 aside.closed .logo {
   display: block;
   opacity: 1;
   visibility: visible;
-  /* You might want to scale it down */
-  width: 40px; /* adjust as needed */
+  width: 40px; 
   height: auto;
 }
 
-/* Keep logo always visible */
 aside .logo {
   display: block;
 }
@@ -27,6 +25,6 @@ aside.closed .image-container {
 
 aside.closed .logo,
 aside.closed .burgermenu {
-  display: block; /* Keep these visible */
+  display: block; 
 }
 
