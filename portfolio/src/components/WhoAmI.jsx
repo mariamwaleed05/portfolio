@@ -1,5 +1,4 @@
 import React from 'react';
-import './WhoAmI.css'; 
 
 import camera from '../imgs/camera.png';
 import img11 from '../imgs/11.png';
@@ -11,7 +10,6 @@ import img66 from '../imgs/66.png';
 
 const WhoAmI = () => {
   return (
-    <div className="whoami-wrapper">
       <div className="container-center">
         <h1 className="who">
           WHO AM I? WHO AM I? WHO AM I? WHO AM I? WHO AM I?
@@ -46,13 +44,12 @@ const WhoAmI = () => {
           </div>
         </div>
 
-        <h2 className="subtt">
+        <h2 className="subtte">
           Only thing you will need to know is that I love making{' '}
           <span className="t">unique</span> work that actually{' '}
           <span className="t">stands out.</span>
         </h2>
       </div>
-    </div>
   );
 };
 

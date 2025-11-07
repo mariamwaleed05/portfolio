@@ -1,9 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-
+import { Link } from 'react-router-dom';
 import burgerMenuIcon from '../icons/Vector.png';
 import closeIcon from '../icons/close.png';
-
-
 import logo from '../imgs/logo.png';
 import whoAmIIcon from '../imgs/Component 3.png';
 import servicesIcon from '../imgs/Component 4.png';
@@ -20,7 +18,6 @@ const SideMenu = () => {
     console.log("sidebar element:", sidebarRef.current);
     console.log("mainWrapper element:", mainWrapperRef.current);
     
-    // Check initial state
     if (sidebarRef.current && sidebarRef.current.classList.contains('closed')) {
       setIsClosed(true);
     }
@@ -32,7 +29,6 @@ const SideMenu = () => {
     const newState = !isClosed;
     setIsClosed(newState);
     
-    // Toggle classes on refs
     if (sidebarRef.current) {
       sidebarRef.current.classList.toggle('closed');
       console.log("Sidebar classes:", sidebarRef.current.classList);
@@ -57,52 +53,50 @@ const SideMenu = () => {
             data-open-src={burgerMenuIcon}
             data-close-src={closeIcon}
           />
-          <a href="index.html">
+          <Link to="/">
             <img src={logo} className="logo" alt="Logo" />
-          </a>
+          </Link>
           
           <div className="image-container">
-            <a href="about.html">
+            <Link to="/about">
               <img src={whoAmIIcon} className="img" alt="Who Am I Icon" />
-            </a>
+            </Link>
           </div>
-          <a href="about.html">
+          <Link to="/about">
             <p className="t">Who Am I?</p>
-          </a>
+          </Link>
           <div className="line"></div>
           
           <div className="image-container">
-            <a href="services.html">
+            <Link to="/services">
               <img src={servicesIcon} className="img" alt="User Interface Icon" />
-            </a>
+            </Link>
           </div>
-          <a href="services.html">
+          <Link to="/services">
             <p className="t">Services</p>
-          </a>
+          </Link>
           <div className="line"></div>
           
           <div className="image-container">
-            <a href="contact.html">
+            <Link to="/contact">
               <img src={contactIcon} className="img" alt="Contact Me Icon" />
-            </a>
+            </Link>
           </div>
-          <a href="contact.html">
+          <Link to="/contact">
             <p className="t">Contact Me</p>
-          </a>
+          </Link>
           <div className="line"></div>
           
           <div className="image-container">
-            <a href="blog.html">
+            <Link to="/blog">
               <img src={blogIcon} className="img" alt="Blog Icon" />
-            </a>
+            </Link>
           </div>
-          <a href="blog.html">
+          <Link to="/blog">
             <p className="t">Blog</p>
-          </a>
+          </Link>
         </nav>
       </aside>
-
-    
     </>
   );
 };

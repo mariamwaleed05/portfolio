@@ -398,7 +398,7 @@ color: var(--white);
     color: var(--darkred);
     position: absolute;
     font-family: var(--fontunbounded);
-    font-size: 10.7vw;
+    font-size: 11.7vw;
     opacity: 0.5;
     line-height: 0.82;
 }
@@ -406,15 +406,14 @@ color: var(--white);
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            background-color: #000;
+            width: 100%;
         }
         .expansion-group {
             position: relative;
             width: 400px; 
             height: 400px;
             display: flex; 
-            margin-left: 75px;
+            margin-left: 95px;
             margin-top: 5%;
             justify-content: center;
             align-items: center;
@@ -425,7 +424,7 @@ color: var(--white);
             border-radius: 1.5rem;
             cursor: pointer;
             z-index: 10;
-            margin-top: 5%;
+            margin-top: -95%;
             transition: transform 0.3s ease-in-out;
             position: absolute;
         }
@@ -451,26 +450,25 @@ color: var(--white);
             transform: scale(1); 
         }
         .expansion-group:hover .expanded-element:nth-child(2) {
-            transform: translate(-130px, -180px) scale(1);
+            transform: translate(-110px, -180px) scale(1);
         }
         .expansion-group:hover .expanded-element:nth-child(4) {
-            transform: translate(-150px, 0) scale(1);
+            transform: translate(-130px, 0px) scale(1);
         }
         .expansion-group:hover .expanded-element:nth-child(6) {
-            transform: translate(-120px, 150px) scale(1);
+            transform: translate(-90px, 150px) scale(1);
         }
         .expansion-group:hover .expanded-element:nth-child(3) {
-            transform: translate(620px, -120px) scale(1);
+            transform: translate(700px, -160px) scale(1);
         }
         .expansion-group:hover .expanded-element:nth-child(5) {
-            transform: translate(650px, 10px) scale(1);
+            transform: translate(700px, 0px) scale(1);
         }
         .expansion-group:hover .expanded-element:nth-child(7) {
-            transform: translate(620px, 170px) scale(1);
+            transform: translate(700px, 150px) scale(1);
         }
         .expanded-element img {
             width: 100%;
-            height: 100%;
             object-fit: cover;
         }
         .image-placeholder {
@@ -484,25 +482,22 @@ color: var(--white);
             font-size: 0.875rem;
             text-align: center;
         }
-.subtt {
+.subtte {
     font-family: var(--fontunbounded);
     color: var(--white);
-    font-size: 2.3vw;
-    width: 80%;
-    margin-top: 25%;
-    margin-left: 5%;
+    margin-top: 75%;
     text-align: center;
+    margin-left: -45%;
     font-weight: 300;
     line-height: 0.7;
 }
 .t {
     color: var(--white);
       font-size: 4vw;
-    width: 80%;
     font-family: var(--fontsloop);
 }
 .maintitle {
-     color: var(--darkred);
+     color: var(--white);
       font-size: 8vw;
     width: 80%;
     font-weight: 300;
@@ -518,11 +513,15 @@ color: var(--white);
     line-height: 0;
     font-family: var(--fontsloop);
 }
+.up {
+    margin-top: -5%;
+}
 .ssub {
     font-family: var(--fontunbounded);
     color: var(--white);
     font-size: 1.2vw;
     font-weight: 300;
+    line-height: 0;
 }
 .seeall {
     color: var(--darkred);
