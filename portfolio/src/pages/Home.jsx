@@ -12,6 +12,7 @@ import Title from '../common/Title';
 import SubTitle from '../common/SubTitle';
 import InquiryForm from './../components/InquiryForm';
 import SoftwareBasket from '../components/SoftwaresBasket';
+import Footer from './../common/Footer';
 
 
 const Home = () => {
@@ -60,10 +61,11 @@ const Home = () => {
 <InquiryForm/>
 
 <BackToTop/>
-<TextMeButton/>
-</div> 
+<TextMeButton/> 
 
 
+<Footer/>
+</div>
 </>
      );
 }
