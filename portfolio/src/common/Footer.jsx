@@ -33,19 +33,19 @@ const Footer = () => {
                 <div className="footer-center">
                     <h2>Let's Create Something Big.</h2>
                     <div className="social-icons">
-                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                        <a href="https://www.linkedin.com/in/mariammwaleed/" target="_blank" rel="noopener noreferrer">
                             <img src={linkedinIcon} alt="LinkedIn" />
                         </a>
-                        <a href="https://behance.net" target="_blank" rel="noopener noreferrer">
+                        <a href="https://www.behance.net/mariamwaleed7" target="_blank" rel="noopener noreferrer">
                             <img src={behanceIcon} alt="Behance" />
                         </a>
-                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                        <a href="https://www.instagram.com/mariammwaleedd/" target="_blank" rel="noopener noreferrer">
                             <img src={instagramIcon} alt="Instagram" />
                         </a>
-                        <a href="https://wa.me/" target="_blank" rel="noopener noreferrer">
-                            <img src={whatsappIcon} alt="WhatsApp" />
-                        </a>
-                        <a href="mailto:example@example.com">
+                       <a href="https://wa.me/01275843440" target="_blank" rel="noopener noreferrer">
+                     <img src={whatsappIcon} alt="WhatsApp" />
+                       </a>
+                        <a href="mailto:mariamwaleed2005@gmail.com">
                             <img src={emailIcon} alt="Email" />
                         </a>
                     </div>

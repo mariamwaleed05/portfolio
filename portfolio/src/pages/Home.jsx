@@ -63,9 +63,9 @@ const Home = () => {
 <BackToTop/>
 <TextMeButton/> 
 
+</div>
 
 <Footer/>
-</div>
 </>
      );
 }

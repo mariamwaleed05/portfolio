@@ -1941,7 +1941,8 @@ text-align: left;
     font-family: var(--fontunbounded);
     padding-top: 40px;
     margin-top: 5%;
-    width: 100%;
+    width: 95%;
+    margin-left: 5%;
     position: relative;
     overflow: hidden; 
 }
@@ -1957,7 +1958,9 @@ text-align: left;
     align-items: flex-start;
     flex-wrap: wrap;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 80px;
+    margin-left: 8%;
+    margin-bottom: 3%;
     position: relative;
     z-index: 2; 
 }
@@ -1995,7 +1998,7 @@ text-align: left;
     min-width: 300px;
 }
 .footer-center h2 {
-    font-size: 2.5em;
+    font-size: 2em;
     margin-bottom: 25px;
     font-weight: bold;
     letter-spacing: 1px;

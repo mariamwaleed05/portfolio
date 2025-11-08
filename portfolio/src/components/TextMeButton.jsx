@@ -4,7 +4,7 @@ const TextMeButton = () => {
   useEffect(() => {
     const phone = "201275843440";
     const text = encodeURIComponent(
-      "Hi! I found your site and would like to chat about your services."
+      "Hi Mariam! I found your site and would like to chat about your services."
     );
 
     const btn = document.getElementById("whatsapp-cta");
@@ -19,17 +19,14 @@ const TextMeButton = () => {
         : `https://web.whatsapp.com/send?phone=${phone}&text=${text}`;
     }
 
-    // set href when mounted
     btn.setAttribute("href", getWhatsAppUrl());
 
-    // update href when clicked (optional refresh)
     const handleClick = () => {
       btn.setAttribute("href", getWhatsAppUrl());
     };
 
     btn.addEventListener("click", handleClick);
 
-    // cleanup listener
     return () => {
       btn.removeEventListener("click", handleClick);
     };
