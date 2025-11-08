@@ -8,9 +8,12 @@ import img44 from '../imgs/44.png';
 import img55 from '../imgs/55.png';
 import img66 from '../imgs/66.png';
 
+
 const WhoAmI = () => {
   return (
-      <div className="container-center">
+    <>
+
+      <div className="main-wrapper">
         <h1 className="who">
           WHO AM I? WHO AM I? WHO AM I? WHO AM I? WHO AM I?
         </h1>
@@ -49,7 +52,9 @@ const WhoAmI = () => {
           <span className="t">unique</span> work that actually{' '}
           <span className="t">stands out.</span>
         </h2>
-      </div>
+</div>
+
+      </>
   );
 };
 

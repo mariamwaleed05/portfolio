@@ -12,6 +12,7 @@ import platterLogo from '../imgs/7.png';
 import proartLogo from '../imgs/3.png';
 import hermanasLogo from '../imgs/8.png';
 import lemmetravelLogo from '../imgs/9.png';
+import arrow from '../icons/arrow.svg';
 
 const ProfileSection = () => {
   const educationData = [
@@ -95,7 +96,7 @@ const ProfileSection = () => {
                 <h3>{item.company}</h3>
                 <p>{item.position}</p>
               </div>
-              <span className="arrow">&nearr;</span>
+              <span className="arrow"><img src={arrow}/></span>
             </div>
           ))}
         </div>

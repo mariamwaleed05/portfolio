@@ -30,6 +30,10 @@ main{
     width: 75%;
     margin-left: 20%;
 }
+Link {
+    text-decoration: none;
+    color: var(--green);
+}
 nav {
     display: flex;
     flex-direction: column;
@@ -37,6 +41,12 @@ nav {
     align-items: center;
     gap: 15%;
     text-decoration: none;
+}
+p {
+    font-family: var(--fontsfpro);
+}
+h3 {
+    font-family: var(--fontunbounded);
 }
 .burgermenu {
     width: 20%;
@@ -853,13 +863,15 @@ font-family: var(--fontsloop);
 .service-arrow {
     font-size: 20px;
     font-weight: 300;
-    color: #a0a0a0;
+    color: var(--white);
 }
 .service-divider {
     border-bottom: 2px dashed #444; 
     margin: 0px 0; 
 }
-
+.down {
+    margin-bottom: 5%;
+}
 .service-item:hover .service-title,
 .service-item:hover .service-arrow {
     color: var(--darkred);
@@ -1981,15 +1993,21 @@ text-align: left;
 }
 .footer-section ul li {
     margin-bottom: 8px;
+    font-family: var(--fontsfpro);
+    text-decoration: none;
+    color: var(--white);
+}
+.footer-section ul li:hover {
+    color: var(--green);
 }
 .footer-section ul li a {
-    color: white;
+    color: var(--white);
     text-decoration: none;
     font-size: 0.95em;
     transition: color 0.3s ease;
 }
 .footer-section ul li a:hover {
-    color: #e0e0e0;
+    color: var(--green);
 }
 .footer-center {
     flex: 2;
@@ -2013,11 +2031,11 @@ text-align: left;
     height: 40px;
     background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent white background for icons */
     border-radius: 50%;
-    padding: 8px; /* Padding inside the circular background */
+    padding: 8px; 
     transition: background-color 0.3s ease;
 }
 .social-icons img:hover {
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(141, 2, 2, 0.4);
 }
 .footer-bottom-image {
     width: 100%;
