@@ -6,7 +6,7 @@ const Designers = [
         experienceLocation: "3+ Years Of Experience   Cairo, Egypt",
         bio1: "I'm Mariam Waleed, A UX/UI And Graphic Designer Who Believes That Design Should Never Be Ordinary. I Have A Bold, Fearless Approach And I Don't Settle For Basic.",
         bio2: "I Love Creating Visuals That Stand Out And Make An Impact. My Style Blends Strong Aesthetics, Creative Risk Taking, And User-Focused Thinking, Allowing Me To Craft Designs That Are Both Striking And Meaningful.",
-        portfolioLink: "#", // Placeholder for specific link
+        portfolioLink: "https://mariamwaleed.com/",
         linkText: "View My Work"
     },
     {
@@ -33,7 +33,7 @@ const Designers = [
         experienceLocation: "3+ Years Of Experience   Cairo, Egypt",
         bio1: "Partinia Emad Is Known For Her Strong UI Design And UX Research Abilities. Her Designs Are Not Only Visually Stunning But Deeply Rooted In Data And User Insights.",
         bio2: "She Ensures Every Interface Tells A Story And Serves A Purpose, Balancing Beauty With Usability.",
-        portfolioLink: "https://partiniaemad.com/",
+        portfolioLink: "https://partiniaboktor.com/",
         linkText: "View Partinia’s Portfolio →"
     },
     {
@@ -60,7 +60,7 @@ const Designers = [
         experienceLocation: "3+ Years Of Experience   Cairo, Egypt",
         bio1: "Mariam Essam Is A UX/UI Designer Known For Her Keen Attention To Detail And Thoughtful User Experiences. Her Designs Reflect Deep Care For Usability, Accessibility, And Visual Harmony.",
         bio2: "Mariam’s Dedication To Crafting Intuitive And Elegant Interfaces Makes Her An Invaluable Part Of The Creative Team.",
-        portfolioLink: "https://mariamessam.com/",
+        portfolioLink: "https://mariamfarid.com/",
         linkText: "Explore Mariam’s Portfolio →"
     },
 ];

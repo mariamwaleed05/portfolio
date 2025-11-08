@@ -16,6 +16,9 @@ import WebDevelopment from './pages/WebDevelopment';
 import Photography from './pages/Photography';
 import MotionGraphics from './pages/MotionGraphics';
 import Modeling from './pages/Modeling';
+import Lanyard from './components/Lanyard';
+import Article from './pages/Article';
+import Portfolio from './pages/Portfolio';
 
 const RoutingApp = () => {
   return (
@@ -25,7 +28,11 @@ const RoutingApp = () => {
         <Route path='/about' element={<About />} />
         <Route path='/contact' element={<Contact />} />
         <Route path='/services' element={<Services />} />
+
         <Route path='/footer' element={<Footer />} />
+
+        <Route path='/Lanyard' element={<Lanyard />} />
+
         <Route path='/Ux' element={<Ux />} />
         <Route path='/GraphicDesign' element={<GraphicDesign />} />
         <Route path='/ContentCreation' element={<ContentCreation />} />
@@ -34,8 +41,10 @@ const RoutingApp = () => {
         <Route path='/Modeling' element={<Modeling />} />
         <Route path='/MotionGraphics' element={<MotionGraphics />} />
 
-        <Route path="/blog" element={<Blog />} />
-        <Route path="/recommended" element={<Recommended />} />
+        <Route path="/Blog" element={<Blog />} />
+        <Route path="/Recommended" element={<Recommended />} />
+        <Route path='/Article' element={<Article />} />
+        <Route path='/Portfolio' element={<Portfolio />} />
 
         <Route path='*' element={<ErrorPage />} />
 

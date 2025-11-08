@@ -12,24 +12,7 @@ const Footer = () => {
         
         <footer className="footer-container">
             <div className="footer-content">
-                <div className="flex-down">
-                <div className="footer-section about">
-                    <h3>About</h3>
-                    <ul>
-                        <Link to="/About"><li>About Mariam</li></Link> 
-                        <Link to="/Contact"><li>Contact Mariam</li></Link> 
-                    </ul>
-                </div>
-
-                 <div className="footer-section explore">
-                    <h3>Explore</h3>
-                    <ul>
-                       <Link to="/Blog"><li>Blogs</li></Link> 
-                         <Link to="/Recommended"><li>Recommended</li></Link> 
-                    </ul>
-                </div>
-
-        </div>
+                
                 <div className="footer-center">
                     <h2>Let's Create Something Big.</h2>
                     <div className="social-icons">
@@ -51,23 +34,8 @@ const Footer = () => {
                     </div>
                 </div>
 
-                <div className="footer-section services">
-                    <h3>Services</h3>
-                    <ul>
-                        <Link to="/Ux"><li>UX/UI</li></Link>
-                        <Link to="/GraphicDesign"><li>Graphic Design</li></Link>
-                        <Link to="/ContentCreation"><li>Content Creation</li></Link>
-                        <Link to="/WebDevelopment"><li>Web Development</li></Link>
-                        <Link to="/Modeling"><li>3D Modeling</li></Link>
-                        <Link to="/Photography"><li>Photography</li></Link>
-                        <Link to="/MotionGraphics"><li>Motion Graphics</li></Link>
-                    </ul>
-                </div>
-
+            
           
-            </div>
-            <div className="footer-bottom-image">
-                <img src={footerImage} alt="Creative tools and objects" />
             </div>
         </footer>
     );

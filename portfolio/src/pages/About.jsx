@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import SideMenu from '../common/SideMenu';
 import Lanyard from '../components/Lanyard';
 import ProfileSection from './../components/ProfileSection';
@@ -10,14 +11,17 @@ import Footer from './../common/Footer';
 import BackToTop from '../components/BackToTop';
 import TextMeButton from '../components/TextMeButton';
 import ToggleButtons from '../components/ToggleButtons';
+import PreLoader from '../common/PreLoader';
 
 const About = () => {
     return (  
         <>
+        <PreLoader/>
       <SideMenu/>
       <ToggleButtons/>
+      <Lanyard />      
+
       <div className='main-wrapper'>
-      <Lanyard />
       <ProfileSection />
       <Baskets />
       <Testimonials />

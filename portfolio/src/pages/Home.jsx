@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import './Home.css';
+
 import SideMenu from '../common/SideMenu';
 import LogosTrack from '../components/LogosTrack';
 import BackToTop from '../components/BackToTop';
@@ -13,6 +15,7 @@ import SubTitle from '../common/SubTitle';
 import InquiryForm from './../components/InquiryForm';
 import SoftwareBasket from '../components/SoftwaresBasket';
 import Footer from './../common/Footer';
+import PreLoader from './../common/PreLoader';
 
 
 const Home = () => {
@@ -25,12 +28,12 @@ const Home = () => {
         <link href="https://fonts.cdnfonts.com/css/sf-pro-display" rel="stylesheet" />
         <link href="https://fonts.cdnfonts.com/css/sloop" rel="stylesheet" />
    
-
+<PreLoader/>
 <SideMenu/>
      <div className="main-wrapper">
 <ToggleButtons/>
 <HeroSection/>
-<Button title="Let's get in touch" className="herobutton" />
+<Link to="/Contact"><Button title="Let's get in touch" className="herobutton" /></Link>
 <LogosTrack/>
 <WhoAmI/>
 

@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+
 import SideMenu from '../common/SideMenu';
 import ToggleButtons from '../components/ToggleButtons';
 import Footer from '../common/Footer';
 import BackToTop from '../components/BackToTop';
 import TextMeButton from '../components/TextMeButton';
+import PreLoader from './../common/PreLoader';
 
 const Services = () => {
     return ( 
         <>
+        <PreLoader/>
         <SideMenu/>
         <ToggleButtons/>
         <div className='main-wrapper'>
@@ -19,51 +23,45 @@ const Services = () => {
             <div className="service-list">
                 <div className="service-item">
                     <span className="service-number">01</span>
-                    <a href="uxui.html"><span className="service-title">UX/UI</span></a>
-                    <a href="uxui.html"><span className="service-arrow">&gt;&gt;</span></a>
+                    <Link to ="/ux"><span className="service-title">UX/UI</span></Link>
+                     <Link to ="/ux"><span className="service-arrow">&gt;&gt;</span></Link>
                 </div>
                 <div className="service-divider"></div>
                 <div className="service-item">
                     <span className="service-number">02</span>
-                    <a href="graphicd.html"><span className="service-title">Graphic Design</span></a>
-                    <a href="graphicd.html"><span className="service-arrow">&gt;&gt;</span></a>
+                     <Link to ="/GraphicDesign"><span className="service-title">Graphic Design</span></Link>
+                     <Link to ="/GraphicDesign"><span className="service-arrow">&gt;&gt;</span></Link>
                 </div>
                 <div className="service-divider"></div>
                 <div className="service-item">
                     <span className="service-number">03</span>
-                    <a href="branding.html"><span className="service-title">Branding</span></a>
-                    <a href="branding.html"><span className="service-arrow">&gt;&gt;</span></a>
+                     <Link to ="/ContentCreation"><span className="service-title">Content Creation</span></Link>
+                     <Link to ="/ContentCreation"><span className="service-arrow">&gt;&gt;</span></Link>
                 </div>
                 <div className="service-divider"></div>
                 <div className="service-item">
                     <span className="service-number">04</span>
-                    <a href="contentcreation.html"><span className="service-title">Content Creation</span></a>
-                    <a href="contentcreation.html"><span className="service-arrow">&gt;&gt;</span></a>
-                </div>
-                <div className="service-divider"></div>
-                <div className="service-item">
-                    <span className="service-number">05</span>
-                    <a href="webdevelopment.html"><span className="service-title">Web Development</span></a>
-                    <a href="webdevelopment.html"><span className="service-arrow">&gt;&gt;</span></a>
+                     <Link to ="/WebDevelopment"><span className="service-title">Web Development</span></Link>
+                    <Link to ="/WebDevelopment"><span className="service-arrow">&gt;&gt;</span></Link>
                 </div>
                 <div className="service-divider"></div>
             </div>
                 <div className="service-item">
+                    <span className="service-number">05</span>
+                    <Link to ="/Photography"><span className="service-title">Photography</span></Link>
+                    <Link to ="/Photography"><span className="service-arrow">&gt;&gt;</span></Link>
+                </div>
+                <div className="service-divider"></div>
+                 <div className="service-item">
                     <span className="service-number">06</span>
-                    <a href="webdevelopment.html"><span className="service-title">Photography</span></a>
-                    <a href="webdevelopment.html"><span className="service-arrow">&gt;&gt;</span></a>
+                    <Link to ="/Modeling"><span className="service-title">3D Modeling</span></Link>
+                    <Link to ="/Modeling"><span className="service-arrow">&gt;&gt;</span></Link>
                 </div>
                 <div className="service-divider"></div>
                  <div className="service-item">
                     <span className="service-number">07</span>
-                    <a href="webdevelopment.html"><span className="service-title">3D Modeling</span></a>
-                    <a href="webdevelopment.html"><span className="service-arrow">&gt;&gt;</span></a>
-                </div>
-                <div className="service-divider"></div>
-                 <div className="service-item">
-                    <span className="service-number">08</span>
-                    <a href="webdevelopment.html"><span className="service-title">Motion Graphics</span></a>
-                    <a href="webdevelopment.html"><span className="service-arrow">&gt;&gt;</span></a>
+                    <Link to ="/MotionGraphics"><span className="service-title">Motion Graphics</span></Link>
+                    <Link to ="/MotionGraphics"><span className="service-arrow">&gt;&gt;</span></Link>
                 </div>
                 <div className="service-divider down"></div>
         </section>

@@ -1,18 +1,17 @@
-'use client';
 import { useEffect, useRef, useState } from 'react';
 import { Canvas, extend, useFrame } from '@react-three/fiber';
 import { useGLTF, useTexture, Environment, Lightformer } from '@react-three/drei';
 import { BallCollider, CuboidCollider, Physics, RigidBody, useRopeJoint, useSphericalJoint } from '@react-three/rapier';
 import { MeshLineGeometry, MeshLineMaterial } from 'meshline';
 
-import card from '../3D/card.glb';
-import lanyard from '../imgs/lanyard.png';
+import gltfModelPath from '../dimensional/card.glb';
+import textureImagePath from '../imgs/lanyard.png';
 
 import * as THREE from 'three';
 
 extend({ MeshLineGeometry, MeshLineMaterial });
 
-export default function Lanyard({ position = [0, 0, 30], gravity = [0, -40, 0], fov = 20, transparent = true }) {
+export default function Lanyard({ position = [0, 0, 30], gravity = [0, -90, 0], fov = 20, transparent = true }) {
   return (
     <div className="relative z-0 w-full h-screen flex justify-center items-center transform scale-100 origin-center">
       <Canvas
@@ -22,7 +21,7 @@ export default function Lanyard({ position = [0, 0, 30], gravity = [0, -40, 0], 
       >
         <ambientLight intensity={Math.PI} />
         <Physics gravity={gravity} timeStep={1 / 60}>
-          <Band />
+          <Band gltfPath={gltfModelPath} texturePath={textureImagePath} />
         </Physics>
         <Environment blur={0.75}>
           <Lightformer
@@ -30,48 +29,36 @@ export default function Lanyard({ position = [0, 0, 30], gravity = [0, -40, 0], 
             color="white"
             position={[0, -1, 5]}
             rotation={[0, 0, Math.PI / 3]}
-            scale={[100, 0.1, 1]}
-          />
-          <Lightformer
-            intensity={3}
-            color="white"
-            position={[-1, -1, 1]}
-            rotation={[0, 0, Math.PI / 3]}
-            scale={[100, 0.1, 1]}
-          />
-          <Lightformer
-            intensity={3}
-            color="white"
-            position={[1, 1, 1]}
-            rotation={[0, 0, Math.PI / 3]}
-            scale={[100, 0.1, 1]}
-          />
-          <Lightformer
-            intensity={10}
-            color="white"
-            position={[-10, 0, 14]}
-            rotation={[0, Math.PI / 2, Math.PI / 3]}
-            scale={[100, 10, 1]}
+            scale={[900, 0.1, 1]}
           />
         </Environment>
       </Canvas>
     </div>
   );
 }
-function Band({ maxSpeed = 50, minSpeed = 0 }) {
+
+function Band({ maxSpeed = 50, minSpeed = 0, gltfPath, texturePath }) {
   const band = useRef(),
     fixed = useRef(),
     j1 = useRef(),
     j2 = useRef(),
     j3 = useRef(),
-    card = useRef();
+    cardRef = useRef();
+
+  console.log("Band component is rendering.");
+
+  const { nodes, materials } = useGLTF(gltfPath);
+  console.log("useGLTF(gltfPath) called. ALL Nodes:", nodes, "ALL Materials:", materials);
+
+  const texture = useTexture(textureImagePath);
+  console.log("useTexture(texturePath) called. Texture:", texture);
+
   const vec = new THREE.Vector3(),
     ang = new THREE.Vector3(),
     rot = new THREE.Vector3(),
     dir = new THREE.Vector3();
   const segmentProps = { type: 'dynamic', canSleep: true, colliders: false, angularDamping: 4, linearDamping: 4 };
-  const { nodes, materials } = useGLTF(card);
-  const texture = useTexture(lanyard);
+
   const [curve] = useState(
     () =>
       new THREE.CatmullRomCurve3([new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3()])
@@ -83,7 +70,7 @@ function Band({ maxSpeed = 50, minSpeed = 0 }) {
   useRopeJoint(fixed, j1, [[0, 0, 0], [0, 0, 0], 1]);
   useRopeJoint(j1, j2, [[0, 0, 0], [0, 0, 0], 1]);
   useRopeJoint(j2, j3, [[0, 0, 0], [0, 0, 0], 1]);
-  useSphericalJoint(j3, card, [
+  useSphericalJoint(j3, cardRef, [
     [0, 0, 0],
     [0, 1.5, 0]
   ]);
@@ -110,8 +97,8 @@ function Band({ maxSpeed = 50, minSpeed = 0 }) {
       vec.set(state.pointer.x, state.pointer.y, 0.5).unproject(state.camera);
       dir.copy(vec).sub(state.camera.position).normalize();
       vec.add(dir.multiplyScalar(state.camera.position.length()));
-      [card, j1, j2, j3, fixed].forEach(ref => ref.current?.wakeUp());
-      card.current?.setNextKinematicTranslation({ x: vec.x - dragged.x, y: vec.y - dragged.y, z: vec.z - dragged.z });
+      [cardRef, j1, j2, j3, fixed].forEach(ref => ref.current?.wakeUp());
+      cardRef.current?.setNextKinematicTranslation({ x: vec.x - dragged.x, y: vec.y - dragged.y, z: vec.z - dragged.z });
     }
     if (fixed.current) {
       [j1, j2].forEach(ref => {
@@ -127,14 +114,29 @@ function Band({ maxSpeed = 50, minSpeed = 0 }) {
       curve.points[2].copy(j1.current.lerped);
       curve.points[3].copy(fixed.current.translation());
       band.current.geometry.setPoints(curve.getPoints(32));
-      ang.copy(card.current.angvel());
-      rot.copy(card.current.rotation());
-      card.current.setAngvel({ x: ang.x, y: ang.y - rot.y * 0.25, z: ang.z });
+      ang.copy(cardRef.current.angvel());
+      rot.copy(cardRef.current.rotation());
+      cardRef.current.setAngvel({ x: ang.x, y: ang.y - rot.y * 0.25, z: ang.z });
     }
   });
 
   curve.curveType = 'chordal';
   texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+
+  // --- IMPORTANT: Placeholder for the actual GLTF mesh name ---
+  // If your card appeared but was small/rotated, then 'YOUR_CARD_MESH_NAME_HERE' was likely correct.
+  // However, if the meshes inside the GLTF have different names than 'clip' and 'clamp',
+  // you will need to inspect the 'nodes' object in the console and adjust these.
+  const cardMeshName = 'YOUR_CARD_MESH_NAME_HERE'; // <<< REPLACE THIS WITH THE ACTUAL NAME FROM YOUR CONSOLE!
+  const clipMeshName = 'clip'; // Adjust if your GLTF names it differently
+  const clampMeshName = 'clamp'; // Adjust if your GLTF names it differently
+
+
+  // Add a check to prevent errors if nodes or materials aren't loaded yet
+  if (!nodes || !materials) {
+    console.warn("GLTF nodes or materials not loaded, skipping mesh rendering for now.");
+    return null; // Don't render if assets aren't ready
+  }
 
   return (
     <>
@@ -149,31 +151,39 @@ function Band({ maxSpeed = 50, minSpeed = 0 }) {
         <RigidBody position={[1.5, 0, 0]} ref={j3} {...segmentProps}>
           <BallCollider args={[0.1]} />
         </RigidBody>
-        <RigidBody position={[2, 0, 0]} ref={card} {...segmentProps} type={dragged ? 'kinematicPosition' : 'dynamic'}>
+        <RigidBody position={[2, 0, 0]} ref={cardRef} {...segmentProps} type={dragged ? 'kinematicPosition' : 'dynamic'}>
           <CuboidCollider args={[0.8, 1.125, 0.01]} />
           <group
-            scale={2.25}
+            scale={5} // ADJUST THIS VALUE to make it larger or smaller
+            rotation={[Math.PI / 2, Math.PI, 0]} // ADJUST THIS VALUE for correct orientation (X, Y, Z radians)
             position={[0, -1.2, -0.05]}
             onPointerOver={() => hover(true)}
             onPointerOut={() => hover(false)}
             onPointerUp={e => (e.target.releasePointerCapture(e.pointerId), drag(false))}
             onPointerDown={e => (
               e.target.setPointerCapture(e.pointerId),
-              drag(new THREE.Vector3().copy(e.point).sub(vec.copy(card.current.translation())))
+              drag(new THREE.Vector3().copy(e.point).sub(vec.copy(cardRef.current.translation())))
             )}
           >
-            <mesh geometry={nodes.card.geometry}>
-              <meshPhysicalMaterial
-                map={materials.base.map}
-                map-anisotropy={16}
-                clearcoat={1}
-                clearcoatRoughness={0.15}
-                roughness={0.9}
-                metalness={0.8}
-              />
-            </mesh>
-            <mesh geometry={nodes.clip.geometry} material={materials.metal} material-roughness={0.3} />
-            <mesh geometry={nodes.clamp.geometry} material={materials.metal} />
+            {nodes[cardMeshName] && (
+              <mesh geometry={nodes[cardMeshName].geometry}>
+                <meshPhysicalMaterial
+                  map={materials.base ? materials.base.map : null} // Ensure materials.base exists
+                  map-anisotropy={16}
+                  clearcoat={1}
+                  clearcoatRoughness={0.15}
+                  roughness={0.9}
+                  metalness={0.8}
+                />
+              </mesh>
+            )}
+            {nodes[clipMeshName] && (
+              <mesh geometry={nodes[clipMeshName].geometry} material={materials.metal} material-roughness={0.3} />
+            )}
+            {/* Render clamp mesh if it exists */}
+            {nodes[clampMeshName] && (
+              <mesh geometry={nodes[clampMeshName].geometry} material={materials.metal} />
+            )}
           </group>
         </RigidBody>
       </group>

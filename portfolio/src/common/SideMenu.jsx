@@ -93,7 +93,7 @@ const SideMenu = () => {
             </Link>
           </div>
           <Link to="/blog">
-            <p className="t">Blog</p>
+            <p className="t">Blogs</p>
           </Link>
         </nav>
       </aside>

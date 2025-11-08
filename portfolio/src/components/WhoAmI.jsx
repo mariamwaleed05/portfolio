@@ -7,13 +7,13 @@ import img33 from '../imgs/33.png';
 import img44 from '../imgs/44.png';
 import img55 from '../imgs/55.png';
 import img66 from '../imgs/66.png';
-
+import BackToTop from './BackToTop';
+import TextMeButton from './TextMeButton';
 
 const WhoAmI = () => {
   return (
     <>
-
-      <div className="main-wrapper">
+      <div className="container-center">
         <h1 className="who">
           WHO AM I? WHO AM I? WHO AM I? WHO AM I? WHO AM I?
         </h1>
@@ -52,8 +52,10 @@ const WhoAmI = () => {
           <span className="t">unique</span> work that actually{' '}
           <span className="t">stands out.</span>
         </h2>
-</div>
+      </div>
 
+      <BackToTop/>
+      <TextMeButton/>
       </>
   );
 };

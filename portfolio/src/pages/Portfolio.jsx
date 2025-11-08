@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import SideMenu from '../common/SideMenu';
 import ToggleButtons from './../components/ToggleButtons';
 import BackToTop from '../components/BackToTop';
@@ -7,21 +8,22 @@ import Footer from '../common/Footer';
 import Title from '../common/Title';
 import PreLoader from './../common/PreLoader';
 
-const GraphicDesign = () => {
-    return (
+const Portfolio = () => {
+    return ( 
         <>
         <PreLoader/>
-         <SideMenu/>
+        <SideMenu/>
         <ToggleButtons/>
 
 <div className='main-wrapper'>
-        <Title title="Graphic Design" className="maintitle" />
+        <Title title="Portfolio" className="maintitle" />
 </div>
+
         <Footer/>
         <BackToTop/>
         <TextMeButton/>
         </>
-      );
+     );
 }
  
-export default GraphicDesign;
+export default Portfolio;
