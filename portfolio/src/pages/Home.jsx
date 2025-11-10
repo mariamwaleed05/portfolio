@@ -16,6 +16,8 @@ import InquiryForm from './../components/InquiryForm';
 import SoftwareBasket from '../components/SoftwaresBasket';
 import Footer from './../common/Footer';
 import PreLoader from './../common/PreLoader';
+import HangingCards from '../components/HangingCards';
+import ServicesSection from '../components/ServicesSection';
 
 
 const Home = () => {
@@ -40,28 +42,22 @@ const Home = () => {
 <Title  title="Services" className="maintitle" />
 <div class="flex up">
 <SubTitle  subtitle="UX/UI Designer & Graphic Designer." className="ssub" />
-<a href="services.html"><h2 class="seeall">See All</h2></a>
+<Link to="/Services"><h2 class="seeall">See All</h2></Link>
 </div>
-
 
 
 <Title  title="From idea to bloom" className="maintitle" />
 <SubTitle  subtitle="My Process / How Do I Work as a Designer?" className="ssub" />
-
+<HangingCards/>
 
 
 
 <Title  title="Software i use" className="maintitle" />
 <div class="flex up">
 <SubTitle  subtitle="as a UX/UI Designer" className="ssub" />
-<a href="services.html"><h2 class="seeall">See All</h2></a>
 </div>
 <SoftwareBasket/>
 
-<Title  title="Let's get in touch" className="maintitle" />
-<SubTitle  subtitle="If you're looking for a creative UX/UI Designer
- who blends strategy with design, let's create something meaningful." className="sssub" />
-<InquiryForm/>
 
 <BackToTop/>
 <TextMeButton/> 

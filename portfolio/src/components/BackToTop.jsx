@@ -20,7 +20,6 @@ const BackToTop = () => {
     window.addEventListener("scroll", handleScroll);
     backToTopBtn?.addEventListener("click", handleClick);
 
-    // Cleanup when component unmounts
     return () => {
       window.removeEventListener("scroll", handleScroll);
       backToTopBtn?.removeEventListener("click", handleClick);

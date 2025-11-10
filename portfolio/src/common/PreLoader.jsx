@@ -17,13 +17,7 @@ const Preloader = () => {
     return (
         <div className="preloader">
             <div className="preloader-content">
-                <div className="bouncing-dots">
-                    <div className="dot dot-1"></div>
-                    <div className="dot dot-2"></div>
-                    <div className="dot dot-3"></div>
-                </div>
-                
-                <div className="loading-text">
+                        <div className="loading-text">
                     <span className="letter">L</span>
                     <span className="letter">o</span>
                     <span className="letter">a</span>
@@ -34,6 +28,12 @@ const Preloader = () => {
                     <span className="dots-animation">...</span>
                 </div>
 
+                <div className="bouncing-dots">
+                    <div className="dot dot-1"></div>
+                    <div className="dot dot-2"></div>
+                    <div className="dot dot-3"></div>
+                </div>
+                
             </div>
         </div>
     );
