@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Helmet } from "react-helmet";
 
 import SideMenu from '../common/SideMenu';
 import Lanyard from '../components/Lanyard';
@@ -16,6 +17,7 @@ import PreLoader from '../common/PreLoader';
 const About = () => {
     return (  
         <>
+        <Helmet><title>Biography</title></Helmet>
         <PreLoader/>
       <SideMenu/>
       <ToggleButtons/>

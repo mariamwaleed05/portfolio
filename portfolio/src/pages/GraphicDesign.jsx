@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Helmet } from "react-helmet";
+
 import SideMenu from '../common/SideMenu';
 import ToggleButtons from './../components/ToggleButtons';
 import BackToTop from '../components/BackToTop';
@@ -10,12 +12,16 @@ import PreLoader from './../common/PreLoader';
 const GraphicDesign = () => {
     return (
         <>
+        <Helmet><title>Graphic Design</title></Helmet>
         <PreLoader/>
          <SideMenu/>
         <ToggleButtons/>
 
 <div className='main-wrapper'>
         <Title title="Graphic Design" className="maintitle" />
+
+
+        
 </div>
         <Footer/>
         <BackToTop/>

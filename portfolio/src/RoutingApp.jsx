@@ -19,13 +19,18 @@ import Modeling from './pages/Modeling';
 import Lanyard from './components/Lanyard';
 import Article from './pages/Article';
 import Portfolio from './pages/Portfolio';
+import WorkExperience from './pages/WorkExperience';
 
 const RoutingApp = () => {
   return (
     <BrowserRouter>
+
       <Routes>
         <Route path='/' element={<Home />} />
+       
         <Route path='/about' element={<About />} />
+        <Route path='/WorkExperience' element={<WorkExperience />} />
+
         <Route path='/contact' element={<Contact />} />
         <Route path='/services' element={<Services />} />
 

@@ -24,7 +24,7 @@ const Designers = [
         experienceLocation: "3+ Years Of Experience   Cairo, Egypt",
         bio1: "Seif Mohamed Merges Coding, UX/UI Design, And Branding Into Seamless Digital Experiences. His Expertise In Logo Creation And Web Development Ensures That Every Project Looks Sharp And Performs Perfectly.",
         bio2: "Seif’s Attention To Functionality And User Flow Makes His Work Stand Out In Today’s Digital Landscape.",
-        portfolioLink: "https://seifmohamed.com/",
+        portfolioLink: "https://studio-s.site/",
         linkText: "Visit Seif’s Portfolio →"
     },
     {

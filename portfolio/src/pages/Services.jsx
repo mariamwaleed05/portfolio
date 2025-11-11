@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Helmet } from "react-helmet";
+
 import { Link } from 'react-router-dom';
 import { Monitor, Palette, FileText, Code, Camera, Box, Film } from 'lucide-react';
 import SideMenu from '../common/SideMenu';
@@ -72,6 +74,7 @@ const Services = () => {
 
     return (
         <>
+        <Helmet><title>My Services</title></Helmet>
             <PreLoader />
             <SideMenu />
             <ToggleButtons />

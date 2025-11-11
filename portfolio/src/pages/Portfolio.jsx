@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Helmet } from "react-helmet";
 
 import SideMenu from '../common/SideMenu';
 import ToggleButtons from './../components/ToggleButtons';
@@ -11,6 +12,7 @@ import PreLoader from './../common/PreLoader';
 const Portfolio = () => {
     return ( 
         <>
+        <Helmet><title>Build Your Portfolio</title></Helmet>
         <PreLoader/>
         <SideMenu/>
         <ToggleButtons/>

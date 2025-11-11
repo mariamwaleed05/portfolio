@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from "react-helmet";
 import SideMenu from '../common/SideMenu';
 import ToggleButtons from './../components/ToggleButtons';
 import BackToTop from '../components/BackToTop';
@@ -47,6 +48,7 @@ const Blog = () => {
 
     return (  
         <>
+            <Helmet><title>Blog</title></Helmet>
         <Preloader/>
             <SideMenu/>
             <ToggleButtons/>

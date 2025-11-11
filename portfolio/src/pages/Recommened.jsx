@@ -1,4 +1,6 @@
 import React from 'react';
+import { Helmet } from "react-helmet";
+
 import DesignerProfile from '../components/DesignerProfile'; 
 import Designer from '../components/Designer'; 
 import SideMenu from '../common/SideMenu';
@@ -11,6 +13,7 @@ import PreLoader from './../common/PreLoader';
 const Recommended = () => {
     return (
         <>
+       <Helmet><title>Recommened Designers</title></Helmet>
         <PreLoader/>
         <SideMenu/>
         <ToggleButtons/>

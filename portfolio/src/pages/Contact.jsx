@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Helmet } from "react-helmet";
+
 import SideMenu from '../common/SideMenu';
 import ToggleButtons from './../components/ToggleButtons';
 import BackToTop from '../components/BackToTop';
@@ -14,6 +16,7 @@ const Contact = () => {
     return ( 
 
         <>
+        <Helmet><title>Get In Touch</title></Helmet>
         <PreLoader/>
           <SideMenu/>
         <ToggleButtons/>

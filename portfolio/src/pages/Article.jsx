@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { Helmet } from "react-helmet";
 import { Link } from 'react-router-dom';
+
 import SideMenu from '../common/SideMenu';
 import ToggleButtons from '../components/ToggleButtons';
 import BackToTop from '../components/BackToTop';
@@ -40,6 +42,7 @@ const Article = () => {
 
     return (
         <>
+        <Helmet><title>Know Everything About Design</title></Helmet>
             <PreLoader />
             <SideMenu />
             <ToggleButtons />

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Helmet } from "react-helmet";
+
 import SideMenu from '../common/SideMenu';
 import ToggleButtons from './../components/ToggleButtons';
 import BackToTop from '../components/BackToTop';
@@ -10,6 +12,7 @@ import PreLoader from './../common/PreLoader';
 const Modeling = () => {
     return ( 
         <>
+        <Helmet><title>3D Modeling</title></Helmet>
         <PreLoader/>
         <SideMenu/>
         <ToggleButtons/>
