@@ -1,16 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowLeft, Calendar, Tag, ExternalLink, Sparkles } from 'lucide-react';
+import { useNavigate } from 'react-router-dom'; // Add this if using React Router
 import './ServiceProjects.css';
 
 const ServiceProjects = ({ serviceName, serviceColor = '#690600', projects }) => {
     const [hoveredProject, setHoveredProject] = useState(null);
     const [scrollY, setScrollY] = useState(0);
+    const navigate = useNavigate(); // For navigation
 
     useEffect(() => {
         const handleScroll = () => setScrollY(window.scrollY);
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
+    const handleProjectClick = (projectId) => {
+        navigate(`/project/${projectId}`);
+    };
 
     return (
         <div className="service-projects-container">
@@ -36,7 +42,7 @@ const ServiceProjects = ({ serviceName, serviceColor = '#690600', projects }) =>
                         <Sparkles className="sparkle sparkle-2" size={16} color={serviceColor} />
                     </div>
                     <h1 className="service-title">{serviceName}</h1>
-                    <p className="service-subtitle">PROJECTS</p>
+                    <p className="service-subtitle">PORTFOLIO PROJECTS</p>
                     <div className="title-underline" style={{ backgroundColor: serviceColor }}>
                         <div className="underline-glow" style={{ backgroundColor: serviceColor }}></div>
                     </div>
@@ -54,17 +60,21 @@ const ServiceProjects = ({ serviceName, serviceColor = '#690600', projects }) =>
                         onHover={() => setHoveredProject(project.id)}
                         onLeave={() => setHoveredProject(null)}
                         serviceColor={serviceColor}
+                        onClick={() => handleProjectClick(project.id)}
                     />
                 ))}
             </div>
         </div>
-        
     );
 };
 
-const ProjectCard = ({ project, index, isHovered, onHover, onLeave, serviceColor }) => {
+const ProjectCard = ({ project, index, isHovered, onHover, onLeave, serviceColor, onClick }) => {
     return (
-        <a href={`/project/${project.id}`} className="project-card-link">
+        <div
+            className="project-card-link"
+            onClick={onClick}
+            style={{ cursor: 'pointer' }}
+        >
             <div
                 className={`project-card ${isHovered ? 'hovered' : ''}`}
                 style={{ 
@@ -80,7 +90,7 @@ const ProjectCard = ({ project, index, isHovered, onHover, onLeave, serviceColor
                     <RealisticPin />
                 </div>
 
-                <div className="image-containner">
+                <div className="image-container">
                     <img 
                         src={project.thumbnail} 
                         alt={project.title}
@@ -146,7 +156,7 @@ const ProjectCard = ({ project, index, isHovered, onHover, onLeave, serviceColor
                     <div className="particle particle-3" style={{ backgroundColor: serviceColor }}></div>
                 </div>
             </div>
-        </a>
+        </div>
     );
 };
 

@@ -21,6 +21,7 @@ import Article from './pages/Article';
 import Portfolio from './pages/Portfolio';
 import WorkExperience from './pages/WorkExperience';
 import ServiceProjects from './components/ServiceProjects';
+import ProjectDetailsPage from './pages/ProjectDetailsPage';
 
 const RoutingApp = () => {
   return (
@@ -38,6 +39,7 @@ const RoutingApp = () => {
 
         <Route path='/services' element={<Services />} />
         <Route path='/ServiceProjects' element={<ServiceProjects />} />
+        <Route path="/project/:projectId" element={<ProjectDetailsPage />} />   
         <Route path='/Ux' element={<Ux />} />
         <Route path='/GraphicDesign' element={<GraphicDesign />} />
         <Route path='/ContentCreation' element={<ContentCreation />} />

@@ -53,7 +53,6 @@ const Article = () => {
                 <header className="blog-header">
                     <div className="header-content animate-on-scroll">
                         <Title title="Blog" className="maintitle" />
-                        <div className="header-decoration"></div>
                     </div>
                 </header>
 
@@ -244,12 +243,12 @@ const Article = () => {
                                 </div>
                             </div>
                             <div className="card-image-placeholder">
-                                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80" alt="Designer" />
+                                <img src="#" alt="Designer" />
                             </div>
                             <div className="card-footer">
                                 <h2>Rahma Magdy</h2>
                                 <p>Creative Designer / Photographer</p>
-                                <div className="arrow-icon">→</div>
+                                <div className="arrow-icon"></div>
                             </div>
                         </div>
 
@@ -265,12 +264,12 @@ const Article = () => {
                                 </div>
                             </div>
                             <div className="card-image-placeholder">
-                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80" alt="Designer" />
+                                <img src="#" alt="Designer" />
                             </div>
                             <div className="card-footer">
                                 <h2>Seif Mohamed</h2>
                                 <p>UX/UI Designer</p>
-                                <div className="arrow-icon">→</div>
+                                <div className="arrow-icon"></div>
                             </div>
                         </div>
 
@@ -286,12 +285,12 @@ const Article = () => {
                                 </div>
                             </div>
                             <div className="card-image-placeholder">
-                                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80" alt="Designer" />
+                                <img src="#" alt="Designer" />
                             </div>
                             <div className="card-footer">
                                 <h2>Partinia Emad</h2>
                                 <p>UX/UI Designer</p>
-                                <div className="arrow-icon">→</div>
+                                <div className="arrow-icon"></div>
                             </div>
                         </div>
                     </div>

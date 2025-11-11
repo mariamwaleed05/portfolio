@@ -3,6 +3,7 @@
     width: 100%;
     font-family: var(--fontunbounded);
     position: relative;
+    padding-top: 5%;
 }
 
 .floating-shapes {

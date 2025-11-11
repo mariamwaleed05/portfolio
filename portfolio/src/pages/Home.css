@@ -1884,7 +1884,7 @@ text-align: left;
     color: var(--white);
     font-family: var(--fontsfpro);
     margin: 0;
-    text-align: left;
+    text-align: center;
     line-height: 1.4;
 }
 .arrow {

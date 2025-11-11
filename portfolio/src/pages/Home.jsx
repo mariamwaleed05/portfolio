@@ -13,7 +13,6 @@ import Button from '../common/Button';
 import WhoAmI from '../components/WhoAmI';
 import Title from '../common/Title';
 import SubTitle from '../common/SubTitle';
-import InquiryForm from './../components/InquiryForm';
 import SoftwareBasket from '../components/SoftwaresBasket';
 import Footer from './../common/Footer';
 import PreLoader from './../common/PreLoader';
