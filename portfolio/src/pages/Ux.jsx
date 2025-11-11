@@ -12,7 +12,9 @@ import PreLoader from './../common/PreLoader';
 const Ux = () => {
     return ( 
         <>
-        <Helmet><title>UX/UI</title></Helmet>
+        <Helmet><title>UX/UI</title>
+             <link rel="icon" type="image/png" href="/icon.png" sizes="16x16" />    
+        </Helmet>
         <PreLoader/>
         <SideMenu/>
         <ToggleButtons/>

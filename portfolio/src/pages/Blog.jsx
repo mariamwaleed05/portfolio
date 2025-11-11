@@ -48,7 +48,9 @@ const Blog = () => {
 
     return (  
         <>
-            <Helmet><title>Blog</title></Helmet>
+            <Helmet><title>Blog</title>
+                 <link rel="icon" type="image/png" href="/icon.png" sizes="16x16" />    
+            </Helmet>
         <Preloader/>
             <SideMenu/>
             <ToggleButtons/>

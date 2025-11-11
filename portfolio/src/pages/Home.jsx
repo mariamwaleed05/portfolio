@@ -25,7 +25,12 @@ const Home = () => {
           
     return ( 
 <>
-       <Helmet><title>Mariam's Portfolio</title></Helmet>
+     <Helmet>
+     <title>Mariam's Portfolio</title>
+     <meta name="description" content="Explore the design and development portfolio of Mariam, showcasing creative projects in UX/UI & Graphic Design." />
+     <link rel="icon" type="image/png" href="/icon.png" sizes="16x16" />    
+   </Helmet>
+
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
         <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=swap" rel="stylesheet" />

@@ -13,7 +13,9 @@ import PreLoader from './../common/PreLoader';
 const Photography = () => {
     return (
         <>
-        <Helmet><title>Photography</title></Helmet>
+        <Helmet><title>Photography</title>
+             <link rel="icon" type="image/png" href="/icon.png" sizes="16x16" />    
+        </Helmet>
         <PreLoader/>
         <SideMenu/>
         <ToggleButtons/>

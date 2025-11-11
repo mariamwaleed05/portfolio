@@ -12,7 +12,9 @@ import PreLoader from './../common/PreLoader';
 const WebDevelopment = () => {
     return ( 
         <>
-        <Helmet><title>Web Development</title></Helmet>
+        <Helmet><title>Web Development</title>
+             <link rel="icon" type="image/png" href="/icon.png" sizes="16x16" />    
+        </Helmet>
         <PreLoader/>
         <SideMenu/>
         <ToggleButtons/>

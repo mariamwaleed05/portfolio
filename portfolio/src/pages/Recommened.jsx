@@ -13,7 +13,9 @@ import PreLoader from './../common/PreLoader';
 const Recommended = () => {
     return (
         <>
-       <Helmet><title>Recommened Designers</title></Helmet>
+       <Helmet><title>Recommened Designers</title>
+            <link rel="icon" type="image/png" href="/icon.png" sizes="16x16" />    
+       </Helmet>
         <PreLoader/>
         <SideMenu/>
         <ToggleButtons/>

@@ -16,7 +16,9 @@ const Contact = () => {
     return ( 
 
         <>
-        <Helmet><title>Get In Touch</title></Helmet>
+        <Helmet><title>Get In Touch</title>
+             <link rel="icon" type="image/png" href="/icon.png" sizes="16x16" />    
+        </Helmet>
         <PreLoader/>
           <SideMenu/>
         <ToggleButtons/>

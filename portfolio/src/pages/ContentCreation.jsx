@@ -12,7 +12,9 @@ import PreLoader from './../common/PreLoader';
 const ContentCreation = () => {
     return ( 
         <>
-        <Helmet><title>Content Creation</title></Helmet>
+        <Helmet><title>Content Creation</title>
+             <link rel="icon" type="image/png" href="/icon.png" sizes="16x16" />    
+        </Helmet>
         <PreLoader/>
          <SideMenu/>
         <ToggleButtons/>

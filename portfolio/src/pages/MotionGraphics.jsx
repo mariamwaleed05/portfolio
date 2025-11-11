@@ -13,7 +13,9 @@ import PreLoader from './../common/PreLoader';
 const MotionGraphics = () => {
     return ( 
         <>
-        <Helmet><title>Motion Graphics</title></Helmet>
+        <Helmet><title>Motion Graphics</title>
+             <link rel="icon" type="image/png" href="/icon.png" sizes="16x16" />    
+        </Helmet>
         <PreLoader/>
          <SideMenu/>
         <ToggleButtons/>

@@ -42,7 +42,9 @@ const Article = () => {
 
     return (
         <>
-        <Helmet><title>Know Everything About Design</title></Helmet>
+        <Helmet><title>Know Everything About Design</title>
+             <link rel="icon" type="image/png" href="/icon.png" sizes="16x16" />    
+        </Helmet>
             <PreLoader />
             <SideMenu />
             <ToggleButtons />

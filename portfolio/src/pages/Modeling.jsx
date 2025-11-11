@@ -12,7 +12,9 @@ import PreLoader from './../common/PreLoader';
 const Modeling = () => {
     return ( 
         <>
-        <Helmet><title>3D Modeling</title></Helmet>
+        <Helmet><title>3D Modeling</title>
+             <link rel="icon" type="image/png" href="/icon.png" sizes="16x16" />    
+        </Helmet>
         <PreLoader/>
         <SideMenu/>
         <ToggleButtons/>

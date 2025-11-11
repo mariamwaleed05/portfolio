@@ -74,7 +74,9 @@ const Services = () => {
 
     return (
         <>
-        <Helmet><title>My Services</title></Helmet>
+        <Helmet><title>My Services</title>
+             <link rel="icon" type="image/png" href="/icon.png" sizes="16x16" />    
+        </Helmet>
             <PreLoader />
             <SideMenu />
             <ToggleButtons />
