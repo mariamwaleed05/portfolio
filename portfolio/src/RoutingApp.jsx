@@ -20,6 +20,7 @@ import Lanyard from './components/Lanyard';
 import Article from './pages/Article';
 import Portfolio from './pages/Portfolio';
 import WorkExperience from './pages/WorkExperience';
+import ServiceProjects from './components/ServiceProjects';
 
 const RoutingApp = () => {
   return (
@@ -30,14 +31,13 @@ const RoutingApp = () => {
        
         <Route path='/about' element={<About />} />
         <Route path='/WorkExperience' element={<WorkExperience />} />
-
         <Route path='/contact' element={<Contact />} />
-        <Route path='/services' element={<Services />} />
-
         <Route path='/footer' element={<Footer />} />
 
         <Route path='/Lanyard' element={<Lanyard />} />
 
+        <Route path='/services' element={<Services />} />
+        <Route path='/ServiceProjects' element={<ServiceProjects />} />
         <Route path='/Ux' element={<Ux />} />
         <Route path='/GraphicDesign' element={<GraphicDesign />} />
         <Route path='/ContentCreation' element={<ContentCreation />} />

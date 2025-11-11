@@ -20,7 +20,7 @@ const Services = () => {
             icon: Monitor,
             color: '#690600',
             items: ['Mobile Apps', 'Web Interfaces', 'Wireframes'],
-            link: '/ux'
+            link: '/ux' 
         },
         {
             id: 2,
@@ -28,7 +28,7 @@ const Services = () => {
             icon: Palette,
             color: '#690600',
             items: ['Branding', 'Logos', 'Print Design'],
-            link: '/GraphicDesign'
+            link: '/GraphicDesign' 
         },
         {
             id: 3,
@@ -36,7 +36,7 @@ const Services = () => {
             icon: FileText,
             color: '#690600',
             items: ['Copywriting', 'Strategy', 'Social Media'],
-            link: '/ContentCreation'
+            link: '/ContentCreation' 
         },
         {
             id: 4,
@@ -44,7 +44,7 @@ const Services = () => {
             icon: Code,
             color: '#690600',
             items: ['React', 'Node.js', 'Full Stack'],
-            link: '/WebDevelopment'
+            link: '/WebDevelopment' 
         },
         {
             id: 5,
@@ -52,7 +52,7 @@ const Services = () => {
             icon: Camera,
             color: '#690600',
             items: ['Product', 'Portrait', 'Commercial'],
-            link: '/Photography'
+            link: '/Photography' 
         },
         {
             id: 6,
@@ -60,7 +60,7 @@ const Services = () => {
             icon: Box,
             color: '#690600',
             items: ['Characters', 'Products', 'Environments'],
-            link: '/Modeling'
+            link: '/Modeling' 
         },
         {
             id: 7,
@@ -68,15 +68,16 @@ const Services = () => {
             icon: Film,
             color: '#690600',
             items: ['Animation', 'Video Editing', 'Effects'],
-            link: '/MotionGraphics'
+            link: '/MotionGraphics' 
         }
     ];
 
     return (
         <>
-        <Helmet><title>My Services</title>
-             <link rel="icon" type="image/png" href="/icon.png" sizes="16x16" />    
-        </Helmet>
+            <Helmet>
+                <title>My Services</title>
+                <link rel="icon" type="image/png" href="/icon.png" sizes="16x16" />    
+            </Helmet>
             <PreLoader />
             <SideMenu />
             <ToggleButtons />
@@ -135,8 +136,6 @@ const ServiceCard = ({ service, index, isHovered, onHover, onLeave }) => {
                     </div>
                     
                     <h2 className="card-title">{service.title}</h2>
-                    
-                 
                     
                     <div className={`items-list ${isHovered ? 'visible' : ''}`}>
                         {service.items.map((item, i) => (
