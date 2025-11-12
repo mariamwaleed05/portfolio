@@ -139,7 +139,6 @@ const ProjectDetails = ({ project, serviceColor = '#690600' }) => {
                 </div>
             </div>
 
-            {/* Navigation Tabs */}
             <div className="project-nav-sticky">
                 <div className="project-nav">
                     <button 

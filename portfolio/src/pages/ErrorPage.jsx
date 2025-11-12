@@ -9,8 +9,10 @@ const ErrorPage = () => {
         <>
 <PreLoader/>
         <SideMenu/>
+        <div className='main-wrapper'>
         <ToggleButtons/>
         <h1 className='error'>ERROR 404</h1>
+        </div>
         </>
      );
 }

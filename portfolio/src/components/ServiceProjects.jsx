@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowLeft, Calendar, Tag, ExternalLink, Sparkles } from 'lucide-react';
-import { useNavigate } from 'react-router-dom'; // Add this if using React Router
+import { useNavigate } from 'react-router-dom'; 
 import './ServiceProjects.css';
 
 const ServiceProjects = ({ serviceName, serviceColor = '#690600', projects }) => {
     const [hoveredProject, setHoveredProject] = useState(null);
     const [scrollY, setScrollY] = useState(0);
-    const navigate = useNavigate(); // For navigation
+    const navigate = useNavigate();
 
     useEffect(() => {
         const handleScroll = () => setScrollY(window.scrollY);
@@ -98,7 +98,7 @@ const ProjectCard = ({ project, index, isHovered, onHover, onLeave, serviceColor
                     />
                     <div className="image-overlay" style={{ backgroundColor: `${serviceColor}dd` }}>
                         <div className="overlay-content">
-                            <ExternalLink size={24} />
+                            <ExternalLink size={20} />
                             <span className="view-text">View Project</span>
                         </div>
                     </div>
