@@ -24,7 +24,7 @@ const Photography = () => {
         <ToggleButtons/>
 
 <div className='main-wrapper'>
-               <ServiceProjects serviceName="Photoghraphy" serviceColor="#690600" projects={photographyProjects} />;
+      <ServiceProjects serviceName="Photoghraphy" serviceColor="#690600" projects={photographyProjects} />;
 
 </div>
 

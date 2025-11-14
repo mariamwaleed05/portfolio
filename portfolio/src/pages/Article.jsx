@@ -52,7 +52,7 @@ const Article = () => {
             <div className="main-wrapper">
                 <header className="blog-header">
                     <div className="header-content animate-on-scroll">
-                        <Title title="Blog" className="maintitle" />
+                        <Title title="ux/ui & graphic design" className="maintitle" />
                     </div>
                 </header>
 
