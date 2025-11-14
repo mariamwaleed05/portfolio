@@ -4,7 +4,7 @@ import mainImg from "../imgs/main.png";
 const HeroSection = () => {
   return (
     <>
-      <div className="numbers">
+      {/* <div className="numbers">
         <div className="b1">
           <h1 className="year">3+</h1>
           <p className="text">EXPERIENCES</p>
@@ -19,7 +19,7 @@ const HeroSection = () => {
           <h1 className="year">15+</h1>
           <p className="text">PROGRAMS</p>
         </div>
-      </div>
+      </div> */}
 
       <div className="hero">
         <h1 className="uxtitle">UX/UI DESIGNER</h1>

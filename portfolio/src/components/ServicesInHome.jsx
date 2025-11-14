@@ -11,13 +11,13 @@ import ser7 from '../imgs/ser7.png';
 
 const ServicesSection = () => {
   const houses = [
-    { id: 1, title: 'UX/UI', image: ser1 },
-    { id: 2, title: 'DESIGNS', image: ser2 },
-    { id: 3, title: 'CONTENT\nCREATION', image: ser3 },
-    { id: 4, title: 'CODING', image: ser4 },
-    { id: 5, title: 'MOTION\nGRAPHICS', image: ser5 },
-    { id: 6, title: 'PHOTOGRAPHY', image: ser6 },
-    { id: 7, title: '3D\nMODELING', image: ser7 }
+    { id: 1, title: 'UX/UI', image: ser1, link: '/services/Ux' },
+    { id: 2, title: 'DESIGNS', image: ser2, link: '/services/GraphicDesign' },
+    { id: 3, title: 'CONTENT\nCREATION', image: ser3, link: '/services/ContentCreation' },
+    { id: 4, title: 'CODING', image: ser4, link: '/services/WebDevelopment' },
+    { id: 5, title: 'MOTION\nGRAPHICS', image: ser5, link: '/services/MotionGraphics' },
+    { id: 6, title: 'PHOTOGRAPHY', image: ser6, link: '/services/Photography' },
+    { id: 7, title: '3D\nMODELING', image: ser7, link: '/services/Modeling' }
   ];
 
   const scrollContainerRef = useRef(null);
@@ -31,8 +31,10 @@ const ServicesSection = () => {
   const checkScrollability = useCallback(() => {
     const slider = scrollContainerRef.current;
     if (slider) {
-      setCanScrollLeft(slider.scrollLeft > 5); 
-      setCanScrollRight(slider.scrollLeft < slider.scrollWidth - slider.clientWidth - 5); // Add a small buffer
+      // Allow a small buffer for checking scroll limits
+      const buffer = 5; 
+      setCanScrollLeft(slider.scrollLeft > buffer); 
+      setCanScrollRight(slider.scrollLeft < slider.scrollWidth - slider.clientWidth - buffer); 
     }
   }, []);
 
@@ -41,7 +43,8 @@ const ServicesSection = () => {
     if (slider && slider.firstElementChild) {
       const firstCard = slider.firstElementChild;
       const cardWidth = firstCard.offsetWidth; 
-      const cardMarginRight = parseFloat(window.getComputedStyle(firstCard).marginRight); // If you used margin-right for gap
+      // Assuming a fixed gap of 30px based on common styling for such layouts.
+      // Adjust if your CSS gap is different.
       const gap = 30; 
 
       const scrollAmount = cardWidth + gap;
@@ -59,6 +62,8 @@ const ServicesSection = () => {
     if (!slider) return;
 
     const mouseDownHandler = (e) => {
+      // Only start dragging if it's the primary mouse button (left click)
+      if (e.button !== 0) return; 
       isDragging.current = true;
       slider.classList.add('active-dragging');
       startX.current = e.pageX - slider.offsetLeft;
@@ -77,9 +82,9 @@ const ServicesSection = () => {
 
     const mouseMoveHandler = (e) => {
       if (!isDragging.current) return;
-      e.preventDefault();
+      e.preventDefault(); // Prevent text selection and other default behaviors
       const x = e.pageX - slider.offsetLeft;
-      const walk = (x - startX.current) * 1.5; 
+      const walk = (x - startX.current) * 1.5; // Adjust scroll speed
       slider.scrollLeft = scrollLeft.current - walk;
     };
 
@@ -93,6 +98,7 @@ const ServicesSection = () => {
     slider.addEventListener('mousemove', mouseMoveHandler);
     slider.addEventListener('scroll', handleScroll);
 
+    // Initial check and setup for resize
     checkScrollability();
     const handleResize = () => checkScrollability();
     window.addEventListener('resize', handleResize);
@@ -105,7 +111,7 @@ const ServicesSection = () => {
       slider.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', handleResize);
     };
-  }, [checkScrollability]);
+  }, [checkScrollability]); // Re-run effect if checkScrollability changes
 
   return (
     <div className="houses-section-wrapper">
@@ -120,20 +126,23 @@ const ServicesSection = () => {
 
       <div className="houses-container" ref={scrollContainerRef}>
         {houses.map((house, index) => (
-          <div key={house.id} className="house-card" style={{ animationDelay: `${index * 0.1}s` }}>
-            <img src={pin} alt="Pin" className="pin" />
-            <div className="homme-content-double">
-              <h3 className="house-title">
-                {house.title.split('\n').map((line, i) => (
-                  <React.Fragment key={i}>
-                    {line}
-                    {i < house.title.split('\n').length - 1 && <br />}
-                  </React.Fragment>
-                ))}
-              </h3>
-              <img src={house.image} alt={house.title} className="house-image" />
+          // Use an <a> tag to make the entire card clickable and linkable
+          <a href={house.link} key={house.id} className="house-card-link">
+            <div className="house-card" style={{ animationDelay: `${index * 0.1}s` }}>
+              <img src={pin} alt="Pin" className="pin" />
+              <div className="homme-content-double">
+                <h3 className="house-title">
+                  {house.title.split('\n').map((line, i) => (
+                    <React.Fragment key={i}>
+                      {line}
+                      {i < house.title.split('\n').length - 1 && <br />}
+                    </React.Fragment>
+                  ))}
+                </h3>
+                <img src={house.image} alt={house.title} className="house-image" />
+              </div>
             </div>
-          </div>
+          </a>
         ))}
       </div>
 

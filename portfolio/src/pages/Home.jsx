@@ -19,6 +19,7 @@ import PreLoader from './../common/PreLoader';
 import HangingCards from '../components/HangingCards';
 import ServicesSection from '../components/ServicesSection';
 import ServicesInHome from '../components/ServicesInHome';
+import CountUp from '../components/CountUp';
 
 
 const Home = () => {
@@ -41,6 +42,50 @@ const Home = () => {
 <SideMenu/>
      <div className="main-wrapper">
 <ToggleButtons/>
+
+<div className="numbers">
+<div className="b1">
+<CountUp
+  from={0}
+  to={50}
+  separator=","
+  direction="up"
+  duration={1}
+  className="count-up-text"
+/>
+<p className="text">Projects</p>
+</div>
+
+<div className="b1">
+<CountUp
+  from={0}
+  to={15}
+  separator=","
+  direction="up"
+  duration={1}
+  className="count-up-text"
+/>
+<p className="text">Clients</p>
+</div>
+
+
+<div className="b1">
+<CountUp
+  from={0}
+  to={20}
+  separator=","
+  direction="up"
+  duration={1}
+  className="count-up-text"
+/>
+<p className="text">Brands</p>
+</div>
+
+</div>
+
+
+
+
 <HeroSection/>
 <Link to="/Contact"><Button title="Let's get in touch" className="herobutton" /></Link>
 <LogosTrack/>
