@@ -74,7 +74,7 @@ font-family: var(--fontunbounded);
 color: var(--white);
 font-size: 136px;
 line-height: 0.9;
-width: 40%;
+width: 50%;
 font-weight: 500;
 }
 .graphictitle {
@@ -82,7 +82,7 @@ font-family: var(--fontsloop);
 color: var(--darkred);
 font-size: 165px;
 font-weight: 700;
-margin-top: 10%;
+margin-top: 18%;
 margin-left: 2%;
 line-height: 0.2;
 }

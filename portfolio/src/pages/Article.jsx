@@ -248,7 +248,7 @@ const Article = () => {
                             <div className="card-footer">
                                 <h2>Rahma Magdy</h2>
                                 <p>Creative Designer / Photographer</p>
-                                <div className="arrow-icon"></div>
+                                <a href='https://rahmamagdyy.com/' target='blank'><div className="arrow-icon"></div></a>
                             </div>
                         </div>
 
@@ -269,7 +269,7 @@ const Article = () => {
                             <div className="card-footer">
                                 <h2>Seif Mohamed</h2>
                                 <p>UX/UI Designer</p>
-                                <div className="arrow-icon"></div>
+                                <a href='https://studio-s.site/' target='blank'><div className="arrow-icon"></div></a>
                             </div>
                         </div>
 
@@ -290,7 +290,7 @@ const Article = () => {
                             <div className="card-footer">
                                 <h2>Partinia Emad</h2>
                                 <p>UX/UI Designer</p>
-                                <div className="arrow-icon"></div>
+                                <a href='https://partiniaboktor.com/' target='blank'><div className="arrow-icon"></div></a>
                             </div>
                         </div>
                     </div>

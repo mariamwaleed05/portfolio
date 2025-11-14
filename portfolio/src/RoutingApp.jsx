@@ -10,7 +10,6 @@ import ServicePage from './pages/ServicePage';
 import Recommended from './pages/Recommened';
 import ErrorPage from './pages/ErrorPage';
 import Footer from './common/Footer';
-import Lanyard from './components/Lanyard';
 import Article from './pages/Article';
 import Portfolio from './pages/Portfolio';
 import WorkExperience from './pages/WorkExperience';
@@ -29,7 +28,6 @@ const RoutingApp = () => {
         <Route path='/contact' element={<Contact />} />
         <Route path='/footer' element={<Footer />} />
 
-        <Route path='/Lanyard' element={<Lanyard />} />
 
         <Route path='/services' element={<Services />} />
         <Route path='/services/:serviceType' element={<ServicePage />} /> 

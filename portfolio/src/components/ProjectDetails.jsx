@@ -171,20 +171,20 @@ const ProjectDetails = ({ project, serviceColor = '#690600' }) => {
                         <div className="section-grid">
                             <div className="main-column">
                                 <div className="content-card">
-                                    <h2 className="section-title">Project Overview</h2>
+                                    <h2 className="section-tittle">Project Overview</h2>
                                     <p className="section-text">{project.overview}</p>
                                 </div>
 
                                 {project.challenge && (
                                     <div className="content-card">
-                                        <h2 className="section-title">The Challenge</h2>
+                                        <h2 className="section-tittle">The Challenge</h2>
                                         <p className="section-text">{project.challenge}</p>
                                     </div>
                                 )}
 
                                 {project.solution && (
                                     <div className="content-card">
-                                        <h2 className="section-title">The Solution</h2>
+                                        <h2 className="section-tittle">The Solution</h2>
                                         <p className="section-text">{project.solution}</p>
                                     </div>
                                 )}
@@ -238,7 +238,7 @@ const ProjectDetails = ({ project, serviceColor = '#690600' }) => {
                         <div className="details-grid">
                             {project.features && (
                                 <div className="content-card full-width">
-                                    <h2 className="section-title">Key Features</h2>
+                                    <h2 className="section-tittle">Key Features</h2>
                                     <div className="features-grid">
                                         {project.features.map((feature, i) => (
                                             <div key={i} className="feature-card">
@@ -253,7 +253,7 @@ const ProjectDetails = ({ project, serviceColor = '#690600' }) => {
 
                             {project.process && (
                                 <div className="content-card full-width">
-                                    <h2 className="section-title">Design Process</h2>
+                                    <h2 className="section-tittle">Design Process</h2>
                                     <div className="process-timeline">
                                         {project.process.map((step, i) => (
                                             <div key={i} className="process-step">

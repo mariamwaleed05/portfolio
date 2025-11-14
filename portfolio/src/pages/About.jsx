@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Helmet } from "react-helmet";
 
 import SideMenu from '../common/SideMenu';
-import Lanyard from '../components/Lanyard';
 import ProfileSection from './../components/ProfileSection';
 import Baskets from './../components/Basket';
 import Testimonials from './../components/Testimonials';
@@ -23,7 +22,6 @@ const About = () => {
         <PreLoader/>
       <SideMenu/>
       <ToggleButtons/>
-      <Lanyard />      
 
       <div className='main-wrapper'>
       <ProfileSection />
