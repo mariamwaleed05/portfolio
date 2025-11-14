@@ -1564,6 +1564,7 @@ font-family: var(--fontunbounded);
 }
 .flwex {
     display: flex;
+    margin-top: -25%;
 }
 .profile {
     display: flex;
