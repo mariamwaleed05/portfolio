@@ -13,6 +13,7 @@ import TextMeButton from '../components/TextMeButton';
 import ToggleButtons from '../components/ToggleButtons';
 import PreLoader from '../common/PreLoader';
 import LightRays from '../components/LightRays';
+import Title from '../common/Title';
 
 import id from '../imgs/id.png';
 
@@ -47,6 +48,7 @@ const About = () => {
   
       <ProfileSection />
       <Baskets />
+      <Title  title="Testimonials" className="maintitle upp" />
       <Testimonials />
       <MissionVision />
       <Certificates />

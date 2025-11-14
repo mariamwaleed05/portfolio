@@ -83,9 +83,6 @@ const Home = () => {
 
 </div>
 
-
-
-
 <HeroSection/>
 <Link to="/Contact"><Button title="Let's get in touch" className="herobutton" /></Link>
 <LogosTrack/>

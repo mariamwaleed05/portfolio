@@ -1,21 +1,70 @@
 import React from 'react';
-import vec1 from '../imgs/Vector-1.png';
-import vec2 from '../imgs/Vector.png';
-import vec3 from '../imgs/Vector-3.png';
-import vec4 from '../imgs/Vector-2.png';
 
-const Testimonials = () => {
+const Testimonial = () => {
+  const testimonials = [
+    {
+      id: 1,
+      name: "Nabila El Wakil",
+      comment: "Thank You Mariam! Completely Changed My Brand.",
+      rating: 5,
+      variant: "white",
+      rotation: -5
+    },
+    {
+      id: 2,
+      name: "Nabila El Wakil",
+      comment: "Thank You Mariam! Completely Changed My Brand.",
+      rating: 5,
+      variant: "red",
+      rotation: 3
+    },
+    {
+      id: 3,
+      name: "Nabila El Wakil",
+      comment: "Thank You Mariam! Completely Changed My Brand.",
+      rating: 5,
+      variant: "red",
+      rotation: -3
+    },
+    {
+      id: 4,
+      name: "Nabila El Wakil",
+      comment: "Thank You Mariam! Completely Changed My Brand.",
+      rating: 5,
+      variant: "white",
+      rotation: 2
+    }
+  ];
+
+  const renderStars = (rating) => {
+    return [...Array(rating)].map((_, index) => (
+      <span key={index} className="star" style={{animationDelay: `${index * 0.1}s`}}>★</span>
+    ));
+  };
+
   return (
-    <>
-      <h2 className="name-basket bbt">Testimonials</h2>
-      <div className="Testimonialss">
-        <img src={vec1} className="vec1" alt="Vector decoration 1" />
-        <img src={vec2} className="vec2" alt="Vector decoration 2" />
-        <img src={vec3} className="vec3" alt="Vector decoration 3" />
-        <img src={vec4} className="vec4" alt="Vector decoration 4" />
+    <section className="testimonials-section">
+ 
+      
+      <div className="testimonials-wrapper">
+  
+        {testimonials.map((testimonial, index) => (
+          <div 
+            key={testimonial.id} 
+            className={`testimonial-bubble bubble-${index + 1} ${testimonial.variant}`}
+            style={{transform: `rotate(${testimonial.rotation}deg)`}}
+          >
+            <div className="bubble-shine"></div>
+            <div className="stars-row">
+              {renderStars(testimonial.rating)}
+            </div>
+            <p className="client-name">{testimonial.name}</p>
+            <p className="client-comment">{testimonial.comment}</p>
+          </div>
+        ))}
       </div>
-    </>
+    </section>
   );
 };
 
-export default Testimonials;
+export default Testimonial;
