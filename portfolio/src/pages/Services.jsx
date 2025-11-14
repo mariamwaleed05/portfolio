@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Helmet } from "react-helmet";
-
 import { Link } from 'react-router-dom';
 import { Monitor, Palette, FileText, Code, Camera, Box, Film } from 'lucide-react';
 import SideMenu from '../common/SideMenu';
@@ -20,7 +19,7 @@ const Services = () => {
             icon: Monitor,
             color: '#690600',
             items: ['Mobile Apps', 'Web Interfaces', 'Wireframes'],
-            link: '/ux' 
+            link: '/services/Ux' 
         },
         {
             id: 2,
@@ -28,7 +27,7 @@ const Services = () => {
             icon: Palette,
             color: '#690600',
             items: ['Branding', 'Logos', 'Print Design'],
-            link: '/GraphicDesign' 
+            link: '/services/GraphicDesign' 
         },
         {
             id: 3,
@@ -36,7 +35,7 @@ const Services = () => {
             icon: FileText,
             color: '#690600',
             items: ['Copywriting', 'Strategy', 'Social Media'],
-            link: '/ContentCreation' 
+            link: '/services/ContentCreation' 
         },
         {
             id: 4,
@@ -44,7 +43,7 @@ const Services = () => {
             icon: Code,
             color: '#690600',
             items: ['React', 'Node.js', 'Full Stack'],
-            link: '/WebDevelopment' 
+            link: '/services/WebDevelopment' 
         },
         {
             id: 5,
@@ -52,7 +51,7 @@ const Services = () => {
             icon: Camera,
             color: '#690600',
             items: ['Product', 'Portrait', 'Commercial'],
-            link: '/Photography' 
+            link: '/services/Photography' 
         },
         {
             id: 6,
@@ -60,7 +59,7 @@ const Services = () => {
             icon: Box,
             color: '#690600',
             items: ['Characters', 'Products', 'Environments'],
-            link: '/Modeling' 
+            link: '/services/Modeling' 
         },
         {
             id: 7,
@@ -68,7 +67,7 @@ const Services = () => {
             icon: Film,
             color: '#690600',
             items: ['Animation', 'Video Editing', 'Effects'],
-            link: '/MotionGraphics' 
+            link: '/services/MotionGraphics' 
         }
     ];
 
@@ -81,13 +80,14 @@ const Services = () => {
             <PreLoader />
             <SideMenu />
             <ToggleButtons />
-            <div className='main-wrapper'>
+                        <div className='main-wrapper'>
                 <div className="services-container">
-                    <div className="services-header">
+
+             <div className="services-header">
                         <h1 className="services-title">Services</h1>
                         <p className="services-subtitle">WHAT I OFFER</p>
                     </div>
-                    
+                   
                     <div className="services-grid">
                         {services.map((service, index) => (
                             <ServiceCard

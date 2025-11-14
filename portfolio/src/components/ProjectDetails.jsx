@@ -48,7 +48,7 @@ const ProjectDetails = ({ project, serviceColor = '#690600' }) => {
             </div>
 
             <div className="project-header">
-                <a href={project.backLink || '/services'} className="back-button-details">
+                <a href={project.backLink || '/ServicePage'} className="back-button-details">
                     <ArrowLeft size={20} />
                     <span>Back to Projects</span>
                     <div className="button-shine"></div>

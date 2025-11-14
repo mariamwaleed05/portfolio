@@ -3,10 +3,12 @@ import { ArrowLeft, Calendar, Tag, ExternalLink, Sparkles } from 'lucide-react';
 import { useNavigate } from 'react-router-dom'; 
 import './ServiceProjects.css';
 
-const ServiceProjects = ({ serviceName, serviceColor = '#690600', projects }) => {
-    const [hoveredProject, setHoveredProject] = useState(null);
+const ServiceProjects = ({ serviceName, serviceColor = '#690600', projects, serviceType }) => { 
+        const [hoveredProject, setHoveredProject] = useState(null);
     const [scrollY, setScrollY] = useState(0);
     const navigate = useNavigate();
+
+
 
     useEffect(() => {
         const handleScroll = () => setScrollY(window.scrollY);
@@ -15,8 +17,7 @@ const ServiceProjects = ({ serviceName, serviceColor = '#690600', projects }) =>
     }, []);
 
     const handleProjectClick = (projectId) => {
-        navigate(`/project/${projectId}`);
-    };
+navigate(`/project/${projectId}`, { state: { fromServiceType: serviceType } });    };
 
     return (
         <div className="service-projects-container">

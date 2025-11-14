@@ -1,7 +1,7 @@
 export const contentCreationProjects = [
     {
-        id: 'transportation-app',
-        title: 'Transportation App',
+        id: 'Content Creation',
+        title: 'Content Creation',
         description: 'Mobile app for booking private buses with real-time tracking and QR code verification',
         thumbnail: '/images/ux/transportation-app.jpg',
         date: '2024',

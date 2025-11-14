@@ -18,6 +18,7 @@ import Footer from './../common/Footer';
 import PreLoader from './../common/PreLoader';
 import HangingCards from '../components/HangingCards';
 import ServicesSection from '../components/ServicesSection';
+import ServicesInHome from '../components/ServicesInHome';
 
 
 const Home = () => {
@@ -50,6 +51,7 @@ const Home = () => {
 <SubTitle  subtitle="UX/UI Designer & Graphic Designer." className="ssub" />
 <Link to="/Services"><h2 class="seeall">See All</h2></Link>
 </div>
+<ServicesInHome/>
 
 
 <Title  title="From idea to bloom" className="maintitle" />
