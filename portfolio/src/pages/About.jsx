@@ -12,6 +12,9 @@ import BackToTop from '../components/BackToTop';
 import TextMeButton from '../components/TextMeButton';
 import ToggleButtons from '../components/ToggleButtons';
 import PreLoader from '../common/PreLoader';
+import LightRays from '../components/LightRays';
+
+import id from '../imgs/id.png';
 
 const About = () => {
     return (  
@@ -21,9 +24,27 @@ const About = () => {
         </Helmet>
         <PreLoader/>
       <SideMenu/>
-      <ToggleButtons/>
+
+  <LightRays
+    raysOrigin="top-center"
+    raysColor="#ffffffff"
+    raysSpeed={1.5}
+    lightSpread={1.9}
+    rayLength={1.2}
+    followMouse={true}
+    mouseInfluence={0.1}
+    noiseAmount={0.5}
+    distortion={0.05}
+    className="custom-rays"/>
+
+    <ToggleButtons/>
+
+<div className="idpic-container">
+  <img src={id} alt="id" className="idpic" />
+</div>
 
       <div className='main-wrapper'>
+  
       <ProfileSection />
       <Baskets />
       <Testimonials />
