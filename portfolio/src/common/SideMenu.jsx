@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import burgerMenuIcon from '../icons/Vector.png';
 import closeIcon from '../icons/close.png';
@@ -9,94 +9,104 @@ import contactIcon from '../imgs/Component 8.png';
 import blogIcon from '../imgs/blog.png';
 
 const SideMenu = () => {
-  const [isClosed, setIsClosed] = useState(false);
-  const sidebarRef = useRef(null);
-  const mainWrapperRef = useRef(null);
+  // Initialize state based on screen width (start closed on mobile)
+  const [isOpen, setIsOpen] = useState(window.innerWidth > 768);
 
+  // Optional: Handle window resize to auto-adjust if user rotates screen
   useEffect(() => {
-    console.log("Component mounted.");
-    console.log("sidebar element:", sidebarRef.current);
-    console.log("mainWrapper element:", mainWrapperRef.current);
-    
-    if (sidebarRef.current && sidebarRef.current.classList.contains('closed')) {
-      setIsClosed(true);
-    }
+    const handleResize = () => {
+      if (window.innerWidth <= 768) {
+        setIsOpen(false);
+      } else {
+        setIsOpen(true);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const handleBurgerClick = () => {
-    console.log("Burger menu clicked!");
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
     
-    const newState = !isClosed;
-    setIsClosed(newState);
-    
-    if (sidebarRef.current) {
-      sidebarRef.current.classList.toggle('closed');
-      console.log("Sidebar classes:", sidebarRef.current.classList);
-    }
-    
-    if (mainWrapperRef.current) {
-      mainWrapperRef.current.classList.toggle('sidebar-closed');
-      console.log("Main wrapper classes:", mainWrapperRef.current.classList);
+    // If you have a main wrapper for the content, you should handle its class 
+    // in the parent component or via global context. 
+    // For now, if you need to touch the Main Wrapper specifically:
+    const mainWrapper = document.querySelector('.main-wrapper'); // Replace with your actual main wrapper ID/Class
+    if (mainWrapper) {
+       if (isOpen) {
+         mainWrapper.classList.add('sidebar-closed');
+       } else {
+         mainWrapper.classList.remove('sidebar-closed');
+       }
     }
   };
 
   return (
     <>
-      <aside ref={sidebarRef}>
+      {/* We apply the class based on the state */}
+      <aside className={`sidebar ${isOpen ? 'open' : 'closed'}`}>
         <nav>
-          <img
-            src={isClosed ? closeIcon : burgerMenuIcon}
-            className="burgermenu"
-            id="burgerMenu"
-            alt="Menu Icon"
-            onClick={handleBurgerClick}
-            data-open-src={burgerMenuIcon}
-            data-close-src={closeIcon}
-          />
+          {/* Burger Menu Button */}
+          <div className="menu-toggle-container">
+            <img
+              src={isOpen ? closeIcon : burgerMenuIcon}
+              className="burgermenu"
+              alt="Menu Icon"
+              onClick={toggleMenu}
+            />
+          </div>
+
           <Link to="/">
             <img src={logo} className="logo" alt="Logo" />
           </Link>
           
-          <div className="image-container">
+          <div className="nav-items">
+            <div className="image-container">
+              <Link to="/about">
+                <img src={whoAmIIcon} className="img" alt="Who Am I" />
+              </Link>
+            </div>
+            {/* We conditionally render text or hide it via CSS based on parent class */}
             <Link to="/about">
-              <img src={whoAmIIcon} className="img" alt="Who Am I Icon" />
+              <p className="t">Who Am I?</p>
             </Link>
-          </div>
-          <Link to="/about">
-            <p className="t">Who Am I?</p>
-          </Link>
-          <div className="line"></div>
-          
-          <div className="image-container">
+            <div className="line"></div>
+            
+            <div className="image-container">
+              <Link to="/services">
+                <img src={servicesIcon} className="img" alt="Services" />
+              </Link>
+            </div>
             <Link to="/services">
-              <img src={servicesIcon} className="img" alt="User Interface Icon" />
+              <p className="t">Services</p>
             </Link>
-          </div>
-          <Link to="/services">
-            <p className="t">Services</p>
-          </Link>
-          <div className="line"></div>
-          
-          <div className="image-container">
+            <div className="line"></div>
+            
+            <div className="image-container">
+              <Link to="/contact">
+                <img src={contactIcon} className="img" alt="Contact" />
+              </Link>
+            </div>
             <Link to="/contact">
-              <img src={contactIcon} className="img" alt="Contact Me Icon" />
+              <p className="t">Contact Me</p>
             </Link>
-          </div>
-          <Link to="/contact">
-            <p className="t">Contact Me</p>
-          </Link>
-          <div className="line"></div>
-          
-          <div className="image-container">
+            <div className="line"></div>
+            
+            <div className="image-container">
+              <Link to="/blog">
+                <img src={blogIcon} className="img" alt="Blogs" />
+              </Link>
+            </div>
             <Link to="/blog">
-              <img src={blogIcon} className="img" alt="Blog Icon" />
+              <p className="t">Blogs</p>
             </Link>
           </div>
-          <Link to="/blog">
-            <p className="t">Blogs</p>
-          </Link>
         </nav>
       </aside>
+      
+      {/* Mobile Overlay: Optional, adds a dark background when menu is open on mobile */}
+      {isOpen && <div className="mobile-overlay" onClick={() => setIsOpen(false)}></div>}
     </>
   );
 };
