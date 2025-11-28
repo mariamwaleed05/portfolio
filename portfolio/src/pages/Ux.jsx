@@ -22,7 +22,7 @@ const Ux = () => {
         <ToggleButtons/>
 
 <div className='main-wrapper'>
-                 <ServiceProjects serviceName="UX/UI Design" serviceColor="#690600" projects={uxProjects} />;
+          <ServiceProjects serviceName="UX/UI Design" serviceColor="#690600" projects={uxProjects} />;
 </div>
         <Footer/>
         <BackToTop/>

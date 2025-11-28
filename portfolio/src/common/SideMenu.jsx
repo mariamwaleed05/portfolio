@@ -9,46 +9,43 @@ import contactIcon from '../imgs/Component 8.png';
 import blogIcon from '../imgs/blog.png';
 
 const SideMenu = () => {
-  // Initialize state based on screen width (start closed on mobile)
-  const [isOpen, setIsOpen] = useState(window.innerWidth > 768);
-
-  // Optional: Handle window resize to auto-adjust if user rotates screen
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth <= 768) {
-        setIsOpen(false);
-      } else {
-        setIsOpen(true);
-      }
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  // Check if screen is mobile to set initial state
+  const isMobile = window.innerWidth <= 768;
+  
+  // State: Default open on Desktop, Default closed on Mobile
+  const [isOpen, setIsOpen] = useState(!isMobile);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
-    
-    // If you have a main wrapper for the content, you should handle its class 
-    // in the parent component or via global context. 
-    // For now, if you need to touch the Main Wrapper specifically:
-    const mainWrapper = document.querySelector('.main-wrapper'); // Replace with your actual main wrapper ID/Class
-    if (mainWrapper) {
-       if (isOpen) {
-         mainWrapper.classList.add('sidebar-closed');
-       } else {
-         mainWrapper.classList.remove('sidebar-closed');
-       }
-    }
   };
+
+  // Handle CSS classes for the main content wrapper
+  useEffect(() => {
+    const mainWrapper = document.querySelector('.main-wrapper');
+    if (mainWrapper) {
+      if (isOpen) {
+        mainWrapper.classList.remove('sidebar-closed');
+      } else {
+        mainWrapper.classList.add('sidebar-closed');
+      }
+    }
+  }, [isOpen]);
 
   return (
     <>
-      {/* We apply the class based on the state */}
+      {/* --- 1. MOBILE ONLY FIXED BUTTON (Lives outside the aside) --- */}
+      <div className="mobile-menu-btn" onClick={toggleMenu}>
+        <img 
+          src={isOpen ? closeIcon : burgerMenuIcon} 
+          alt="Menu Toggle" 
+        />
+      </div>
+
+      {/* --- 2. SIDEBAR CONTAINER --- */}
       <aside className={`sidebar ${isOpen ? 'open' : 'closed'}`}>
         <nav>
-          {/* Burger Menu Button */}
-          <div className="menu-toggle-container">
+          {/* --- Desktop Only Button (Hidden on Mobile) --- */}
+          <div className="desktop-menu-btn">
             <img
               src={isOpen ? closeIcon : burgerMenuIcon}
               className="burgermenu"
@@ -67,7 +64,6 @@ const SideMenu = () => {
                 <img src={whoAmIIcon} className="img" alt="Who Am I" />
               </Link>
             </div>
-            {/* We conditionally render text or hide it via CSS based on parent class */}
             <Link to="/about">
               <p className="t">Who Am I?</p>
             </Link>
@@ -104,9 +100,11 @@ const SideMenu = () => {
           </div>
         </nav>
       </aside>
-      
-      {/* Mobile Overlay: Optional, adds a dark background when menu is open on mobile */}
-      {isOpen && <div className="mobile-overlay" onClick={() => setIsOpen(false)}></div>}
+
+      {/* Mobile Overlay (Background Dimmer) */}
+      {isOpen && window.innerWidth <= 768 && (
+        <div className="mobile-overlay" onClick={() => setIsOpen(false)}></div>
+      )}
     </>
   );
 };

@@ -728,11 +728,7 @@
         grid-template-columns: 1fr;
         gap: 30px;
     }
-    
-    .image-container {
-        height: 240px;
-    }
-    
+
     .card-content {
         padding: 24px 20px;
     }

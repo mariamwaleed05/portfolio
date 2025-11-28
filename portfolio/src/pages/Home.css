@@ -197,7 +197,7 @@ z-index: -10;
     box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
   }
 aside {
-    width: 140px; 
+    width: 190px; 
     background-color: var(--black);
     height: 100vh;
     position: fixed;
@@ -234,7 +234,7 @@ aside nav {
 .image-container {
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom:20px;
     width: 100%; 
 }
 aside p.t { 
@@ -294,11 +294,7 @@ aside.closed .line {
     margin-left: -150px;
         width: calc(150% - 0px); 
 }
-.main-wrapper.sidebar-closed {
-    margin-left: 150px; 
-    margin-left: 150px;
-    width: calc(100% - 100px);
-}
+
 .iconns { 
     display: flex;
     justify-content: flex-end; 
@@ -3190,10 +3186,7 @@ text-align: left;
 }
 
 @media (max-width: 768px) {
-    .contact-container {
-        padding: 60px 15px 80px;
-    }
-    
+   
     .contact-title {
         font-size: 40px;
         letter-spacing: -1px;
@@ -3203,11 +3196,36 @@ text-align: left;
         font-size: 16px;
     }
     
-    .form-card {
-        padding: 32px 24px;
-    }
-    
-    .form-title {
+ .main-wrapper {
+  margin-left: 40px;
+  width: 90%;
+ }
+ .uxtitle {
+  font-size: 5rem;
+ }
+ .graphictitle {
+  font-size: 6rem;
+  margin-top: 10%;
+ }
+ .image-container {
+  margin-top: -10%;
+ }
+ .basske {
+  margin-left: 75%;
+ }
+ .flex {
+  gap: 32%;
+ }
+ .contact-container {
+  width: 100%;
+ }
+ .text p {
+  font-size: 0.9rem;
+ }
+ .right {
+  text-align: center;
+ }
+.form-title {
         font-size: 28px;
     }
     
@@ -3774,7 +3792,7 @@ padding-bottom: 15%;
 
 @media (max-width: 768px) {
   .houses-container {
-    padding: 15px 0;
+    padding-bottom: 125px;
     gap: 20px;
   }
   .house-card {
@@ -3784,6 +3802,21 @@ padding-bottom: 15%;
   .house-image {
     width: 110px;
     max-height: 150px;
+  }
+  .carrd-wrapper {
+    width: 130px;
+  }
+  .carrd-content {
+  min-height: 130px;
+  }
+  .stage-title {
+    margin-top: 0;
+  }
+  .hanger-container {
+    width: 105px;
+  }
+  .count-up-text {
+    font-size: 1.7rem;
   }
   .house-title {
     font-size: 14px;
@@ -3804,7 +3837,12 @@ padding-bottom: 15%;
     width: 100%;
     height: 1000px;
 }
-
+.idpic {
+  width: 90%;
+}
+.ddd {
+  width: 80%;
+}
 .idpic-container {
   position: absolute; 
   top: 1px;         
@@ -4419,23 +4457,18 @@ font-weight: 600;
     opacity: 0.3;
   }
 }
-
-/* Responsive Design */
 @media (max-width: 1200px) {
   .testimonials-wrapper {
     height: 900px;
   }
-
   .testimonial-bubble {
     width: 380px;
     padding: 25px 30px;
   }
-
   .large-star {
     right: 80px;
   }
 }
-
 @media (max-width: 768px) {
   .testimonials-wrapper {
     height: auto;
@@ -4443,6 +4476,13 @@ font-weight: 600;
     flex-direction: column;
     gap: 50px;
     padding-top: 140px;
+  }
+  .houses-container {
+    gap: 60px;
+  }
+  .houses-section-wrapper {
+    padding: 0;
+
   }
   .testimonial-bubble {
     position: relative !important;
@@ -4504,7 +4544,6 @@ font-weight: 600;
 @media (max-width:500px) {
 aside {
 width: 100px;
-
  } 
  .image-container {
   height: 60px;
@@ -4538,7 +4577,6 @@ width: 100px;
   font-size: 16vw;
  }
  .image-container {
-  margin-top: -35%;
   width: 100%;
  }
  .sub {
@@ -4561,6 +4599,13 @@ width: 100px;
 .footer-center h2 {
     font-size: 1rem;
 }
+.house-card {
+  width: 120px;
+  
+}
+.houses-section-wrapper {
+  gap: 10px;
+}
 .footer-content {
   margin-left: 0;
   font-size: 0.8;
@@ -4571,6 +4616,46 @@ width: 100px;
 .seeall {
   font-size: 12px;
 }
+.hanging-cards-wrapper {
+  width: 100%;
+}
+.carrd {
+  width: 100px;
+  margin-top: -35%;
+}
+.stage-title {
+  font-size: 1.5vw;
+  margin-top: -5%;
+}
+.carrd-content {
+  min-height: 80px;
+}
+.carrd-text {
+  font-size: 2vw;
+}
+.stage-dot {
+display: none;
+}
+.timeline-stages {
+  align-items: center;
+}
+.stage-dot active {
+  margin-top: 20%;
+}
+.hanger-container {
+  margin-top: -80%;
+  width: 45px;
+}
+.expansion-group {
+  display: none;
+}
+.subtte {
+  font-size: 1.2rem;
+  text-align: center;
+  margin-left: 0;
+  margin-top: 85%;
+  width: 89%;
+}
 .ssub {
   font-size: 1rem;
 }
@@ -4579,9 +4664,387 @@ width: 100px;
 }
 .houses-container {
   padding: 0;
-  gap: 0;
+  height: 80vw;
+  gap: 50px;
 }
 .flex {
   gap: 5px;
 }
+}
+aside.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    background-color: var(--black);
+    z-index: 2000;
+    transition: all 0.3s ease-in-out;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+.mobile-menu-btn {
+    display: none;
+}
+.desktop-menu-btn img {
+    width: 30px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+aside.sidebar.closed {
+    width: 100px; 
+}
+aside.sidebar.closed .t,
+aside.sidebar.closed .logo,
+aside.sidebar.closed .line {
+    opacity: 0;
+    pointer-events: none;
+    display: none;
+}
+
+@media (max-width: 768px) {
+
+    .mobile-menu-btn {
+        display: flex; 
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 3000; 
+        background-color: rgba(0, 0, 0, 0.6); 
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        backdrop-filter: blur(5px);
+    }
+
+    .mobile-menu-btn img {
+        width: 25px;
+        height: auto;
+    }
+
+    .desktop-menu-btn {
+        display: none;
+    }
+
+    aside.sidebar {
+        width: 130px;
+        padding-top: 50px;
+    }
+.logo {
+ padding-top: 35%;
+}
+    aside.sidebar.open {
+        transform: translateX(0); 
+        box-shadow: 5px 0 15px rgba(0,0,0,0.5);
+    }
+
+    aside.sidebar.closed {
+        width: 200px; 
+        transform: translateX(-100%); 
+    }
+    aside.sidebar .t,
+    aside.sidebar .logo,
+    aside.sidebar .line {
+        display: block !important;
+        opacity: 1 !important;
+    }
+    
+    aside.sidebar .logo {
+        margin: 0 auto 20px auto;
+        display: block;
+    }
+    
+    .mobile-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0,0,0,0.5);
+        z-index: 1999; /* Below sidebar, above content */
+        backdrop-filter: blur(2px);
+    }
+}
+/* =======================================================
+   PASTE THIS AT THE VERY BOTTOM OF YOUR CSS FILE
+   ======================================================= */
+
+/* --- Tablet / Smaller Laptops (max-width: 1024px) --- */
+@media (max-width: 1024px) {
+    .work-experience-section {
+        margin-top: 60px;
+    }
+
+    .work-grid {
+        /* Switch to 2 columns */
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+
+    .work-experience-section .section-title {
+        font-size: 50px; /* Scale down from 70px */
+    }
+}
+
+/* --- Mobile Devices (max-width: 768px) --- */
+@media (max-width: 768px) {
+    .work-experience-section {
+        margin-top: 40px;
+        width: 100%;
+        padding: 0 10px; /* Add breathing room on sides */
+        box-sizing: border-box;
+    }
+
+    .work-experience-section .section-title {
+        font-size: 32px; /* Much smaller for mobile readability */
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .work-grid {
+        /* Switch to 1 column (Stacked) */
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .work-item {
+        /* Add background to separate items visually on mobile */
+        background-color: rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        padding: 15px;
+        /* Ensure text doesn't go under the arrow */
+        padding-right: 40px; 
+    }
+
+    .work-item .logo-circle {
+        /* Shrink logo container */
+        width: 60px;
+        height: 60px;
+        min-width: 60px; /* Prevent squashing */
+        margin-right: 15px; /* Adjust spacing */
+    }
+
+    .work-item .details h3 {
+        font-size: 16px;
+        line-height: 1.2;
+    }
+
+    .work-item .details p {
+        font-size: 14px;
+        margin-top: 4px;
+    }
+
+    .work-item .arrow {
+        /* Adjust arrow position */
+        right: 15px;
+        width: 20px;
+    }
+    
+    .work-item .arrow img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+/* --- Small Mobile / Narrow Screens (max-width: 480px) --- */
+@media (max-width: 480px) {
+    .work-item {
+        gap: 10px;
+    }
+
+    .work-item .logo-circle {
+        /* Even smaller logos for very small phones */
+        width: 50px;
+        height: 50px;
+        min-width: 50px; 
+    }
+    
+    .work-item .details h3 {
+        font-size: 15px;
+    }
+}
+/* =======================================================
+   EDUCATION & HOBBIES RESPONSIVE STYLES
+   Add to the bottom of your CSS file
+   ======================================================= */
+
+/* --- Tablet / Laptop (max-width: 1024px) --- */
+@media (max-width: 1024px) {
+    .top-row-content {
+        /* Stack Education and Hobbies vertically instead of side-by-side */
+        flex-direction: column;
+        gap: 60px;
+    }
+
+    .education-section {
+        /* Remove the side margin that pushes content off-screen */
+        margin-right: 0;
+        width: 100%;
+    }
+
+    .hobbies-section {
+        width: 100%;
+    }
+    
+    .section-title {
+        font-size: 50px; /* Scale down title size */
+    }
+}
+
+/* --- Mobile Devices (max-width: 768px) --- */
+@media (max-width: 768px) {
+    /* Container Adjustments */
+    .profile-section {
+        gap: 40px; /* Reduce gap between major sections */
+        padding: 0 10px; /* Prevent content touching edges */
+        box-sizing: border-box;
+    }
+
+    .section-title {
+        font-size: 34px; /* Readable mobile size */
+        text-align: center; /* Center titles on mobile */
+        margin-bottom: 30px;
+    }
+
+    /* --- Education Item Adjustments --- */
+    .education-item {
+        /* Align items better for small screens */
+        align-items: flex-start; 
+        margin-bottom: 25px;
+    }
+
+    .education-item .icon-container {
+        /* Shrink the circle icon slightly */
+        width: 50px;
+        height: 50px;
+        min-width: 50px; /* Prevent squashing */
+        margin-right: 15px; /* Reduce gap between icon and text */
+    }
+
+    .education-item .details h3 {
+        font-size: 18px;
+        line-height: 1.3;
+    }
+
+    .education-item .details p {
+        font-size: 14px;
+    }
+
+    /* --- Hobbies Grid Adjustments --- */
+    .hobbies-grid {
+        /* Keep 2 columns, but reduce spacing */
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .hobby-item {
+        /* Add a background to make hobbies pop on mobile */
+        background-color: rgba(255, 255, 255, 0.05);
+        padding: 12px;
+        border-radius: 8px;
+        font-size: 15px;
+        justify-content: center; /* Center content inside the box */
+    }
+
+    .hobby-item img {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+/* --- Very Small Screens (max-width: 480px) --- */
+@media (max-width: 480px) {
+    .hobbies-grid {
+        /* Switch to 1 column for very narrow phones if names are long */
+        /* Or keep 2 columns if names are short. 1 column is safer. */
+        grid-template-columns: 1fr; 
+    }
+    
+    .hobby-item {
+        justify-content: flex-start; /* Left align on single column */
+        padding-left: 20px;
+    }
+}
+/* =======================================================
+   TESTIMONIALS RESPONSIVE STYLES
+   Add to the bottom of your CSS file
+   ======================================================= */
+
+/* --- Tablet (max-width: 1024px) --- */
+@media (max-width: 1024px) {
+    .testimonials-wrapper {
+        /* Remove fixed height so content doesn't overflow */
+        height: auto; 
+        padding-bottom: 50px;
+    }
+
+    .testimonial-bubble {
+        /* Scale bubbles down slightly to fit tablet screens */
+        width: 350px; 
+        padding: 20px;
+    }
+}
+
+/* --- Mobile (max-width: 768px) --- */
+@media (max-width: 768px) {
+    .testimonials-section {
+        margin-top: 50px;
+        padding-bottom: 50px;
+    }
+
+    .testimonials-wrapper {
+        height: auto !important; /* Force auto height */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px; /* Space between stacked bubbles */
+        padding: 20px;
+        margin-top: 20px;
+    }
+
+    /* Reset ALL bubble positioning */
+    .testimonial-bubble {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        
+        /* Override the inline rotation style from React */
+        transform: none !important; 
+        
+        /* Make bubbles full width on mobile */
+        width: 100% !important;
+        max-width: 100%;
+        margin: 0 !important;
+        box-sizing: border-box;
+        
+        /* Center text */
+        text-align: center;
+    }
+
+    /* Center the stars container */
+    .stars-row {
+        justify-content: center;
+    }
+
+    /* Hide the little triangle tails on bubbles because 
+       they point in random directions when stacked */
+    .testimonial-bubble::after {
+        display: none !important;
+    }
+
+    /* Hide background elements that clutter mobile view */
+    .smiley-icon, 
+    .large-star, 
+    .bg-star, 
+    .bg-circle, 
+    .floating-emoji {
+        display: none !important;
+    }
 }
