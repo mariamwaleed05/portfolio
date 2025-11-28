@@ -72,7 +72,7 @@ color: var(--white);
 .uxtitle {
 font-family: var(--fontunbounded);
 color: var(--white);
-font-size: 136px;
+font-size: 8.5rem;
 line-height: 0.9;
 width: 50%;
 font-weight: 500;
@@ -80,9 +80,8 @@ font-weight: 500;
 .graphictitle {
 font-family: var(--fontsloop);
 color: var(--darkred);
-font-size: 165px;
+font-size:10.313rem;
 font-weight: 700;
-margin-top: 18%;
 margin-left: 2%;
 line-height: 0.2;
 }
@@ -98,7 +97,7 @@ z-index: -10;
 }
 .sub {
     font-family: var(--fontsfpro);
-    font-size: 20.402px;
+    font-size:1.275rem;
     text-align: center;
     color: var(--white);
     margin-top: -25px;
@@ -406,7 +405,7 @@ color: var(--white);
     color: var(--darkred);
     position: absolute;
     font-family: var(--fontunbounded);
-    font-size: 11.7vw;
+    font-size: 11vw;
     opacity: 0.5;
     line-height: 0.82;
 }
@@ -421,7 +420,7 @@ color: var(--white);
             width: 400px; 
             height: 400px;
             display: flex; 
-            margin-left: 95px;
+            margin-left: 55px;
             margin-top: 5%;
             justify-content: center;
             align-items: center;
@@ -3159,8 +3158,6 @@ text-align: left;
         transform: rotate(360deg);
     }
 }
-
-/* Responsive Design */
 @media (max-width: 1200px) {
     .contact-content-grid {
         grid-template-columns: 320px 1fr;
@@ -4548,6 +4545,9 @@ width: 100px;
  .image-container {
   height: 60px;
  }
+ .who {
+  margin-left: 5%;
+ }
  .logo {
   margin-bottom: 0;
  }
@@ -4579,9 +4579,7 @@ width: 100px;
  .image-container {
   width: 100%;
  }
- .sub {
-  margin-top: -15%;
- }
+ 
  .herobutton {
   font-size: 3vw;
  }
@@ -4601,7 +4599,6 @@ width: 100px;
 }
 .house-card {
   width: 120px;
-  
 }
 .houses-section-wrapper {
   gap: 10px;
@@ -4639,6 +4636,7 @@ display: none;
 .timeline-stages {
   align-items: center;
 }
+
 .stage-dot active {
   margin-top: 20%;
 }
@@ -4658,9 +4656,6 @@ display: none;
 }
 .ssub {
   font-size: 1rem;
-}
-.maintitle {
-  font-size: clamp(3rem, 5vw, 5rem);
 }
 .houses-container {
   padding: 0;
@@ -4861,12 +4856,13 @@ aside.sidebar.closed .line {
         flex-direction: column;
         gap: 60px;
     }
-
     .education-section {
         margin-right: 0;
         width: 100%;
     }
-
+.who {
+  font-size: 10vw;
+}
     .hobbies-section {
         width: 100%;
     }
@@ -4920,7 +4916,7 @@ aside.sidebar.closed .line {
         padding: 12px;
         border-radius: 8px;
         font-size: 15px;
-        justify-content: center; /* Center content inside the box */
+        justify-content: center;
     }
 
     .hobby-item img {
@@ -4930,31 +4926,25 @@ aside.sidebar.closed .line {
 }
 @media (max-width: 480px) {
     .hobbies-grid {
-        /* Switch to 1 column for very narrow phones if names are long */
-        /* Or keep 2 columns if names are short. 1 column is safer. */
         grid-template-columns: 1fr; 
     }
     
     .hobby-item {
-        justify-content: flex-start; /* Left align on single column */
+        justify-content: flex-start;
         padding-left: 20px;
     }
 }
 @media (max-width: 1024px) {
     .testimonials-wrapper {
-        /* Remove fixed height so content doesn't overflow */
         height: auto; 
         padding-bottom: 50px;
     }
 
     .testimonial-bubble {
-        /* Scale bubbles down slightly to fit tablet screens */
         width: 350px; 
         padding: 20px;
     }
 }
-
-/* --- Mobile (max-width: 768px) --- */
 @media (max-width: 768px) {
     .testimonials-section {
         margin-top: 50px;
@@ -4962,11 +4952,11 @@ aside.sidebar.closed .line {
     }
 
     .testimonials-wrapper {
-        height: auto !important; /* Force auto height */
+        height: auto !important;
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 30px; /* Space between stacked bubbles */
+        gap: 30px;
         padding: 20px;
         margin-top: 20px;
     }
@@ -4999,4 +4989,15 @@ aside.sidebar.closed .line {
     .floating-emoji {
         display: none !important;
     }
+}
+@media (max-width: 1090px) {
+  .who {
+    font-size: 9vw;
+  }
+  .flex {
+    gap: 45%;
+  }
+  .uxtitle {
+    font-size: 9vw;
+  }
 }
