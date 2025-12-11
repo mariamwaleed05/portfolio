@@ -28,7 +28,7 @@ const DesignerProfile = ({ designer }) => {
                 
           
                 <a
-                    href={designer.PortfolioLink || "#"} 
+                    href={designer.Path} 
                     target="_blank"
                     rel="noopener noreferrer"
                 >
