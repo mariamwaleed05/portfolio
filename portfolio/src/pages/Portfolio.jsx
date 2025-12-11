@@ -8,7 +8,6 @@ import TextMeButton from '../components/TextMeButton';
 import Footer from '../common/Footer';
 import PreLoader from './../common/PreLoader';
 
-// Import the extracted CSS file
 import './Portfolio.css';
 
 const Portfolio = () => {
@@ -38,13 +37,10 @@ const Portfolio = () => {
 
   if (loading) return <PreLoader />;
 
-  // Assumes the first row contains the main page Title/Description
   const mainContent = portfolioData[0] || {};
   
-  // Filters rows that have a Process step defined
   const sections = portfolioData.filter(item => item.Process);
 
-  // Extract valid tips
   const tipsList = portfolioData
     .map(item => item.Tips)
     .filter(tip => tip && tip.trim() !== "");
@@ -102,7 +98,6 @@ const Portfolio = () => {
                   className="portfolio-card-content" 
                   style={{ color: activeSection === section.id ? '#d1d5db' : '#9ca3af' }}
                 >
-                  {/* Note: Using Explantaion as provided in your snippet. Change to Explanation if DB column is fixed. */}
                   {section.Explantaion || section.Explanation}
                 </p>
                 <div 

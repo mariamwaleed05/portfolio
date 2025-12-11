@@ -78,7 +78,7 @@ const Services = () => {
 
 const ServiceCard = ({ service, index, isHovered, onHover, onLeave }) => {
     
-    const linkUrl = `/services/${service.Name_EN.replace(/\s+/g, '')}`;
+    const linkUrl = `/services/${service.Name_EN}`;
     
     const tags = service.Tags_EN && Array.isArray(service.Tags_EN) 
         ? service.Tags_EN.map(tag => tag.Title) 
