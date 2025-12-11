@@ -98,7 +98,7 @@ const Contact = () => {
     return (
         <>
             <Helmet>
-                <title>{contactInfo?.Title || "Get In Touch"}</title>
+                <title>{contactInfo?.Title}</title>
                 <link rel="icon" type="image/png" href="/icon.png" sizes="16x16" />    
             </Helmet>
             
@@ -150,7 +150,7 @@ const Contact = () => {
                                 </div>
                                 <h3 className="info-card-title">Call Me</h3>
                                 <a href={`tel:${contactInfo?.Contact}`} className="info-card-link">
-                                    {contactInfo?.Contact || "Loading..."}
+                                    {contactInfo?.Contact}
                                 </a>
                             </div>
 
@@ -160,7 +160,7 @@ const Contact = () => {
                                 </div>
                                 <h3 className="info-card-title">Location</h3>
                                 <p className="info-card-text">
-                                    {contactInfo?.Location || "Cairo, Egypt"}
+                                    {contactInfo?.Location}
                                 </p>
                             </div>
 
@@ -168,26 +168,26 @@ const Contact = () => {
                                 <h3 className="social-title">Connect With Me</h3>
                                 <div className="social-icons-contact">
                                     {contactInfo?.Linkedin && (
-                                        <a href={links.Linkedin || "#"} target="_blank" rel="noopener noreferrer" className="social-icon-link">
+                                        <a href={links.Linkedin} target="_blank" rel="noopener noreferrer" className="social-icon-link">
                                             <img src={contactInfo.Linkedin} alt="LinkedIn" style={{ width: '20px', height: '20px', objectFit: 'contain' }} />
                                         </a>
                                     )}
                                     
                                     {contactInfo?.Behance && (
-                                        <a href={links.Behance || "#"} target="_blank" rel="noopener noreferrer" className="social-icon-link">
+                                        <a href={links.Behance} target="_blank" rel="noopener noreferrer" className="social-icon-link">
                                             <img src={contactInfo.Behance} alt="Behance" style={{ width: '20px', height: '20px', objectFit: 'contain' }} />
                                         </a>
                                     )}
                                     
                                     {contactInfo?.Instagram && (
-                                        <a href={links.Instagram || "#"} target="_blank" rel="noopener noreferrer" className="social-icon-link">
+                                        <a href={links.Instagram} target="_blank" rel="noopener noreferrer" className="social-icon-link">
                                             <img src={contactInfo.Instagram} alt="Instagram" style={{ width: '20px', height: '20px', objectFit: 'contain' }} />
                                         </a>
                                     )}
                                 </div>
                             </div>
 
-                            <a href={contactInfo?.CV || "#"} target="_blank" rel="noopener noreferrer" download className="cv-download-btn">
+                            <a href={contactInfo?.CV} target="_blank" rel="noopener noreferrer" download className="cv-download-btn">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
                                     <polyline points="7 10 12 15 17 10"/>
@@ -198,7 +198,7 @@ const Contact = () => {
 
                             <div className="availability-badge">
                                 <div className="status-dot"></div>
-                                <span>{contactInfo?.Availability || "Available for new projects"}</span>
+                                <span>{contactInfo?.Availability}</span>
                             </div>
                         </div>
 

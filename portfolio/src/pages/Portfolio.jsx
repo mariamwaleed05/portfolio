@@ -1,62 +1,61 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Helmet } from "react-helmet";
+import { supabase } from '../Supabase'; 
 import SideMenu from '../common/SideMenu';
 import ToggleButtons from './../components/ToggleButtons';
 import BackToTop from '../components/BackToTop';
 import TextMeButton from '../components/TextMeButton';
 import Footer from '../common/Footer';
-import Title from '../common/Title';
 import PreLoader from './../common/PreLoader';
+
+// Import the extracted CSS file
+import './Portfolio.css';
 
 const Portfolio = () => {
   const [activeSection, setActiveSection] = useState(null);
+  const [portfolioData, setPortfolioData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const sections = [
-    {
-      id: 1,
-      title: "Define Your Purpose",
-      icon: "🎯",
-      content: "Before diving into design, ask yourself: What do I want to achieve? Are you showcasing development skills, design work, or creative projects? Your portfolio should tell a clear story about who you are and what you can do."
-    },
-    {
-      id: 2,
-      title: "Choose Your Best Work",
-      icon: "⭐",
-      content: "Quality over quantity is key. Select 4-6 projects that showcase your strongest skills and diverse abilities. Each project should demonstrate problem-solving, creativity, and technical expertise. Remember, your portfolio is only as strong as your weakest project."
-    },
-    {
-      id: 3,
-      title: "Craft Compelling Case Studies",
-      icon: "📝",
-      content: "Don't just show the final product. Walk viewers through your process: the problem, your approach, challenges faced, and solutions implemented. Include visuals, code snippets, or design iterations. This demonstrates your thinking process and professionalism."
-    },
-    {
-      id: 4,
-      title: "Design for User Experience",
-      icon: "✨",
-      content: "Your portfolio itself is a project that showcases your skills. Keep navigation intuitive, load times fast, and mobile responsiveness perfect. Use white space effectively, maintain consistent typography, and ensure accessibility. A clean, professional design speaks volumes."
-    },
-    {
-      id: 5,
-      title: "Write an Engaging About Section",
-      icon: "👤",
-      content: "Make it personal but professional. Share your journey, passions, and what drives you. Include your skills, experience, and what makes you unique. Add a professional photo and contact information. People hire people, not just portfolios."
-    },
-    {
-      id: 6,
-      title: "Optimize and Launch",
-      icon: "🚀",
-      content: "Before launching, test everything. Check all links, proofread content, optimize images, and ensure fast loading. Get feedback from peers. Use SEO best practices for better visibility. Finally, share your portfolio on LinkedIn, Twitter, and relevant communities."
+  useEffect(() => {
+    fetchPortfolioData();
+  }, []);
+
+  const fetchPortfolioData = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('PortfolioBlog')
+        .select('*')
+        .order('id', { ascending: true });
+
+      if (error) throw error;
+      setPortfolioData(data);
+    } catch (error) {
+      console.error('Error fetching portfolio data:', error);
+    } finally {
+      setLoading(false);
     }
-  ];
+  };
+
+  if (loading) return <PreLoader />;
+
+  // Assumes the first row contains the main page Title/Description
+  const mainContent = portfolioData[0] || {};
+  
+  // Filters rows that have a Process step defined
+  const sections = portfolioData.filter(item => item.Process);
+
+  // Extract valid tips
+  const tipsList = portfolioData
+    .map(item => item.Tips)
+    .filter(tip => tip && tip.trim() !== "");
 
   return (
     <>
       <Helmet>
-        <title>Build Your Portfolio</title>
+        <title>{mainContent.Title || "Portfolio Guide"}</title>
         <link rel="icon" type="image/png" href="/icon.png" sizes="16x16" />
       </Helmet>
-      <PreLoader />
+      
       <SideMenu />
       <ToggleButtons />
 
@@ -64,16 +63,18 @@ const Portfolio = () => {
 
         <div className='portfolio-container'>
           <header className="portfolio-header portfolio-header-animate">
-            <h1 className="portfolio-main-title">How to Make a Standout Portfolio</h1>
-            <p className="portfolio-subtitle">A comprehensive guide to building a portfolio that gets you noticed</p>
+            <h1 className="portfolio-main-title">
+              {mainContent.Title}
+            </h1>
+            <p className="portfolio-subtitle">
+              {mainContent.Subtitle}
+            </p>
             <div className="portfolio-header-divider portfolio-divider-animate"></div>
           </header>
 
           <section className="portfolio-intro-section portfolio-intro-animate">
             <p className="portfolio-intro-text">
-              In today's competitive landscape, a portfolio isn't just a collection of work it's your personal brand, 
-              your story, and often your ticket to amazing opportunities. Whether you're a developer, designer, or 
-              creative professional, your portfolio should captivate, inform, and inspire action.
+              {mainContent.Description}
             </p>
           </section>
 
@@ -85,16 +86,29 @@ const Portfolio = () => {
                 onMouseEnter={() => setActiveSection(section.id)}
                 onMouseLeave={() => setActiveSection(null)}
               >
-                <div className="portfolio-card-icon" style={{ transform: activeSection === section.id ? 'rotate(360deg) scale(1.2)' : 'rotate(0deg) scale(1)' }}>
-                  {section.icon}
+                <div 
+                  className="portfolio-card-icon" 
+                  style={{ transform: activeSection === section.id ? 'rotate(360deg) scale(1.2)' : 'rotate(0deg) scale(1)' }}
+                >
+                  {section.Icon} 
                 </div>
-                <h2 className="portfolio-card-title" style={{ color: activeSection === section.id ? '#dc2626' : '#f3f4f6' }}>
-                  {section.title}
+                <h2 
+                  className="portfolio-card-title" 
+                  style={{ color: activeSection === section.id ? '#dc2626' : '#f3f4f6' }}
+                >
+                  {section.Process}
                 </h2>
-                <p className="portfolio-card-content" style={{ color: activeSection === section.id ? '#d1d5db' : '#9ca3af' }}>
-                  {section.content}
+                <p 
+                  className="portfolio-card-content" 
+                  style={{ color: activeSection === section.id ? '#d1d5db' : '#9ca3af' }}
+                >
+                  {/* Note: Using Explantaion as provided in your snippet. Change to Explanation if DB column is fixed. */}
+                  {section.Explantaion || section.Explanation}
                 </p>
-                <div className="portfolio-card-border" style={{ width: activeSection === section.id ? '100%' : '0' }}></div>
+                <div 
+                  className="portfolio-card-border" 
+                  style={{ width: activeSection === section.id ? '100%' : '0' }}
+                ></div>
               </div>
             ))}
           </div>
@@ -102,25 +116,26 @@ const Portfolio = () => {
           <section className="portfolio-tips-section portfolio-tips-animate">
             <h2 className="portfolio-tips-title">Pro Tips</h2>
             <div className="portfolio-tips-grid">
-              {[
-                "Keep your portfolio updated with recent work every 3-6 months",
-                "Include a clear call-to-action on every page",
-                "Use analytics to understand which projects resonate most",
-                "Make contact information easily accessible throughout"
-              ].map((tip, index) => (
-                <div key={index} className="portfolio-tip-card">
-                  <span className="portfolio-tip-number">{String(index + 1).padStart(2, '0')}</span>
-                  <p className="portfolio-tip-text">{tip}</p>
-                </div>
-              ))}
+              {tipsList.length > 0 ? (
+                tipsList.map((tip, index) => (
+                  <div key={index} className="portfolio-tip-card">
+                    <span className="portfolio-tip-number">{String(index + 1).padStart(2, '0')}</span>
+                    <p className="portfolio-tip-text">{tip}</p>
+                  </div>
+                ))
+              ) : (
+                <p style={{color: '#9ca3af'}}>No tips available currently.</p>
+              )}
             </div>
           </section>
 
           <footer className="portfolio-footer portfolio-footer-animate">
             <div>
-              <h3 className="portfolio-footer-title">Ready to Build?</h3>
+              <h3 className="portfolio-footer-title">
+                {mainContent.FooterTitle}
+              </h3>
               <p className="portfolio-footer-text">
-                Remember, your portfolio is a living document. Start now, iterate often, and let your work speak for itself.
+                {mainContent.FooterBio}
               </p>
             </div>
           </footer>
