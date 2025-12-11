@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Helmet } from "react-helmet";
-import { Mail, Phone, MapPin, Send, CheckCircle, Linkedin, Instagram, Sparkles } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, CheckCircle, Sparkles } from 'lucide-react';
+import { supabase } from '../Supabase'; 
 import SideMenu from '../common/SideMenu';
 import ToggleButtons from './../components/ToggleButtons';
 import BackToTop from '../components/BackToTop';
@@ -9,6 +10,9 @@ import Footer from '../common/Footer';
 import PreLoader from './../common/PreLoader';
 
 const Contact = () => {
+    const [contactInfo, setContactInfo] = useState(null);
+    const [loadingInfo, setLoadingInfo] = useState(true);
+
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -23,55 +27,55 @@ const Contact = () => {
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [errors, setErrors] = useState({});
 
+    useEffect(() => {
+        const fetchContactInfo = async () => {
+            try {
+                const { data, error } = await supabase
+                    .from('ContactMe')
+                    .select('*')
+                    .single(); 
+
+                if (error) throw error;
+                
+                setContactInfo(data);
+            } catch (error) {
+                console.error(error);
+            } finally {
+                setLoadingInfo(false);
+            }
+        };
+
+        fetchContactInfo();
+    }, []);
+
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData(prev => ({
-            ...prev,
-            [name]: value
-        }));
-        if (errors[name]) {
-            setErrors(prev => ({
-                ...prev,
-                [name]: ''
-            }));
-        }
+        setFormData(prev => ({ ...prev, [name]: value }));
+        if (errors[name]) setErrors(prev => ({ ...prev, [name]: '' }));
     };
 
     const validateForm = () => {
         const newErrors = {};
-        
-        if (!formData.name.trim()) {
-            newErrors.name = 'Name is required';
-        }
-        
+        if (!formData.name.trim()) newErrors.name = 'Name is required';
         if (!formData.email.trim()) {
             newErrors.email = 'Email is required';
         } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
             newErrors.email = 'Email is invalid';
         }
-        
-        if (!formData.message.trim()) {
-            newErrors.message = 'Message is required';
-        }
-        
+        if (!formData.message.trim()) newErrors.message = 'Message is required';
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
-        if (!validateForm()) {
-            return;
-        }
+        if (!validateForm()) return;
         
         setIsSubmitting(true);
         
         setTimeout(() => {
-            console.log('Form submitted:', formData);
             setIsSubmitting(false);
             setIsSubmitted(true);
-            
             setTimeout(() => {
                 setIsSubmitted(false);
                 setFormData({
@@ -87,13 +91,17 @@ const Contact = () => {
         }, 2000);
     };
 
+    if (loadingInfo) return <PreLoader />;
+
+    const links = contactInfo?.Links || {};
+
     return (
         <>
             <Helmet>
-                <title>Get In Touch</title>
+                <title>{contactInfo?.Title || "Get In Touch"}</title>
                 <link rel="icon" type="image/png" href="/icon.png" sizes="16x16" />    
             </Helmet>
-            <PreLoader/>
+            
             <SideMenu/>
             <ToggleButtons/>
             
@@ -109,11 +117,15 @@ const Contact = () => {
                             <Sparkles className="sparkle-contact sparkle-1-contact" size={24} color="#690600" />
                             <Sparkles className="sparkle-contact sparkle-2-contact" size={16} color="#690600" />
                         </div>
-                        <h1 className="contact-title">Let's Get In Touch</h1>
+                        
+                        <h1 className="contact-title">
+                            {contactInfo?.Title || "Let's Get In Touch"}
+                        </h1>
+                        
                         <p className="contact-subtitle">
-                            If you're looking for a creative UX/UI Designer who blends strategy with design, 
-                            let's create something meaningful together.
+                            {contactInfo?.Bio || "If you're looking for a creative UX/UI Designer who blends strategy with design, let's create something meaningful together."}
                         </p>
+                        
                         <div className="title-underline-contact">
                             <div className="underline-glow-contact"></div>
                         </div>
@@ -121,13 +133,14 @@ const Contact = () => {
 
                     <div className="contact-content-grid">
                         <div className="contact-info-section">
+                            
                             <div className="info-card-contact">
                                 <div className="info-icon-circle">
                                     <Mail size={24} color="#690600" />
                                 </div>
                                 <h3 className="info-card-title">Email Me</h3>
-                                <a href="mailto:mariamwaleed2005@gmail.com" className="info-card-link">
-                                    mariamwaleed2005@gmail.com
+                                <a href={`mailto:${contactInfo?.Email}`} className="info-card-link">
+                                    {contactInfo?.Email || "Loading..."}
                                 </a>
                             </div>
 
@@ -136,8 +149,9 @@ const Contact = () => {
                                     <Phone size={24} color="#690600" />
                                 </div>
                                 <h3 className="info-card-title">Call Me</h3>
-                                <a href="tel:01275843440" className="info-card-link">
-                                  01275843440   </a>
+                                <a href={`tel:${contactInfo?.Contact}`} className="info-card-link">
+                                    {contactInfo?.Contact || "Loading..."}
+                                </a>
                             </div>
 
                             <div className="info-card-contact">
@@ -146,28 +160,34 @@ const Contact = () => {
                                 </div>
                                 <h3 className="info-card-title">Location</h3>
                                 <p className="info-card-text">
-                                    Cairo, Egypt
+                                    {contactInfo?.Location || "Cairo, Egypt"}
                                 </p>
                             </div>
 
                             <div className="social-links-contact">
                                 <h3 className="social-title">Connect With Me</h3>
                                 <div className="social-icons-contact">
-                                    <a href="https://www.linkedin.com/in/mariammwaleed/" target="_blank" rel="noopener noreferrer" className="social-icon-link">
-                                        <Linkedin size={20} />
-                                    </a>
-                                    <a href="https://www.behance.net/mariamwaleed7" target="_blank" rel="noopener noreferrer" className="social-icon-link">
-                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                            <path d="M6.5 4.5h3.5c1.38 0 2.5 1.12 2.5 2.5s-1.12 2.5-2.5 2.5H6.5V4.5zm0 6.5H10c1.66 0 3 1.34 3 3s-1.34 3-3 3H6.5v-6zM3 2v20h7c3.31 0 6-2.69 6-6 0-2.14-1.12-4.02-2.81-5.09C14.84 9.88 16 8.06 16 6c0-3.31-2.69-6-6-6H3zm12.5 7h6v1.5h-6V9zM15 13.5c0-2.21 1.79-4 4-4s4 1.79 4 4-1.79 4-4 4-4-1.79-4-4z"/>
-                                        </svg>
-                                    </a>
-                                    <a href="https://www.instagram.com/mariammwaleedd/" target="_blank" rel="noopener noreferrer" className="social-icon-link">
-                                        <Instagram size={20} />
-                                    </a>
+                                    {contactInfo?.Linkedin && (
+                                        <a href={links.Linkedin || "#"} target="_blank" rel="noopener noreferrer" className="social-icon-link">
+                                            <img src={contactInfo.Linkedin} alt="LinkedIn" style={{ width: '20px', height: '20px', objectFit: 'contain' }} />
+                                        </a>
+                                    )}
+                                    
+                                    {contactInfo?.Behance && (
+                                        <a href={links.Behance || "#"} target="_blank" rel="noopener noreferrer" className="social-icon-link">
+                                            <img src={contactInfo.Behance} alt="Behance" style={{ width: '20px', height: '20px', objectFit: 'contain' }} />
+                                        </a>
+                                    )}
+                                    
+                                    {contactInfo?.Instagram && (
+                                        <a href={links.Instagram || "#"} target="_blank" rel="noopener noreferrer" className="social-icon-link">
+                                            <img src={contactInfo.Instagram} alt="Instagram" style={{ width: '20px', height: '20px', objectFit: 'contain' }} />
+                                        </a>
+                                    )}
                                 </div>
                             </div>
 
-                            <a href="https://pdflink.to/e161e6e3/" target="_blank" download className="cv-download-btn">
+                            <a href={contactInfo?.CV || "#"} target="_blank" rel="noopener noreferrer" download className="cv-download-btn">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
                                     <polyline points="7 10 12 15 17 10"/>
@@ -178,7 +198,7 @@ const Contact = () => {
 
                             <div className="availability-badge">
                                 <div className="status-dot"></div>
-                                <span>Available for new projects</span>
+                                <span>{contactInfo?.Availability || "Available for new projects"}</span>
                             </div>
                         </div>
 
