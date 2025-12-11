@@ -1,7 +1,9 @@
 aside.closed {
   width: 60px;
 }
-
+.image-container img {
+    object-fit: contain; 
+}
 .main-wrapper.sidebar-closed {
   margin-left: 60px; 
   width: calc(100% - 60px);
