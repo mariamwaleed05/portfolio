@@ -1,0 +1,322 @@
+
+.services-container {
+  min-height: 100vh;
+  padding: 80px 20px;
+  font-family: var(--fontunbounded), sans-serif; 
+}
+
+.services-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+.img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+.services-title {
+  font-size: 72px;
+  font-weight: 300;
+  color: #ffffff;
+  margin: 0 0 10px 0;
+  font-style: italic;
+  letter-spacing: 2px;
+}
+
+.services-subtitle {
+  font-size: 14px;
+  color: #888;
+  letter-spacing: 4px;
+  margin: 0;
+  text-transform: uppercase;
+}
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.service-card-link {
+  text-decoration: none;
+  display: block;
+}
+
+.service-card {
+  position: relative;
+  background-color: #690600; 
+  border-radius: 12px;
+  padding: 35px 25px;
+  min-height: 200px;
+  max-height: 200px;
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, transparent 60%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.service-card.hovered {
+  transform: translateY(-10px) scale(1.05);
+  min-height: 380px;
+  max-height: 380px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 5px 15px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  z-index: 10;
+}
+
+.service-card.hovered::before {
+  opacity: 1;
+}
+
+.card-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  margin-top: 45px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.decorative-circle {
+  position: absolute;
+  bottom: -50px;
+  right: -50px;
+  width: 100px;
+  height: 100px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  transition: all 0.6s ease;
+  z-index: 0;
+}
+
+.decorative-circle.expanded {
+  width: 300px;
+  height: 300px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.icon-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  height: 70px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  margin-bottom: 15px;
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  background-color: transparent; 
+}
+
+.icon-container img {
+  filter: brightness(0) invert(1);
+  transition: transform 0.5s ease;
+}
+
+.service-card.hovered .icon-container {
+  width: 90px;
+  height: 90px;
+  background: rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.icon-container.rotating {
+  transform: rotate(360deg);
+}
+
+.card-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 15px 0;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  transition: all 0.3s ease;
+}
+
+.service-card.hovered .card-title {
+  font-size: 23px;
+  letter-spacing: 2px;
+}
+
+.items-list {
+  margin-top: 10px;
+  width: 100%;
+  max-width: 200px;
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  overflow: hidden;
+  opacity: 0;
+  max-height: 0;
+  transform: translateY(20px);
+}
+
+.items-list.visible {
+  opacity: 1;
+  max-height: 200px;
+  transform: translateY(0);
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.95);
+  padding: 8px 0;
+  font-weight: 500;
+  text-align: left;
+  transition: all 0.3s ease;
+}
+
+.item:hover {
+  color: #ffffff;
+  transform: translateX(5px);
+}
+
+
+.card-pin {
+  position: absolute;
+  top: 15px;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+.pin-container {
+  position: relative;
+  width: 40px;
+  height: 45px;
+  margin-bottom: 10%;
+}
+
+.pin-body {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-45deg);
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #DC143C 0%, #8B0000 50%, #5C0000 100%);
+  border-radius: 50% 50% 50% 0;
+  box-shadow: inset -3px -3px 6px rgba(0,0,0,0.5), inset 3px 3px 6px rgba(255,100,100,0.3), 0 4px 8px rgba(0,0,0,0.3);
+  margin-bottom: 10%;
+}
+
+.pin-shine {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  width: 12px;
+  height: 12px;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.4), transparent 60%);
+  border-radius: 50%;
+  transform: rotate(45deg);
+}
+
+.pin-head {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 18px;
+  height: 18px;
+  background: linear-gradient(135deg, #DC143C 0%, #8B0000 100%);
+  border-radius: 50%;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.4), inset -2px -2px 4px rgba(0,0,0,0.4), inset 2px 2px 4px rgba(255,100,100,0.3);
+  border: 1px solid rgba(0,0,0,0.2);
+}
+
+.pin-needle {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 8px;
+  background: linear-gradient(to bottom, #666, #333);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3), inset 0 0 1px rgba(255,255,255,0.2);
+  border-radius: 0 0 1px 1px;
+  margin-bottom: 10%;
+}
+
+.pin-card-shadow {
+  width: 10px;
+  height: 2px;
+  background: rgba(0,0,0,0.3);
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  filter: blur(1px);
+}
+
+.pin-tip-shadow {
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 4px;
+  height: 2px;
+  background: rgba(0,0,0,0.5);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .services-title {
+    font-size: 48px;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card-title {
+    font-size: 20px;
+  }
+
+  .service-card.hovered .card-title {
+    font-size: 24px;
+  }
+
+  .services-container {
+    padding: 60px 15px;
+  }
+
+  .service-card {
+    min-height: 180px;
+    max-height: 180px;
+  }
+
+  .service-card.hovered {
+    min-height: 360px;
+    max-height: 360px;
+  }
+}
