@@ -78,7 +78,12 @@ const Services = () => {
 
 const ServiceCard = ({ service, index, isHovered, onHover, onLeave }) => {
     
-    const linkUrl = `/services/${service.Name_EN}`;
+    const getSafeUrl = (name) => {
+        if (name === 'UX/UI') return 'UX';
+        return name;
+    };
+
+    const linkUrl = `/services/${getSafeUrl(service.Name_EN)}`;
     
     const tags = service.Tags_EN && Array.isArray(service.Tags_EN) 
         ? service.Tags_EN.map(tag => tag.Title) 
