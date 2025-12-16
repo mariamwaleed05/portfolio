@@ -1,21 +1,19 @@
 import { supabase } from '../../Supabase';
 
-// Helper to safely parse JSON without crashing
 const safeJsonParse = (input) => {
   if (!input) return [];
-  if (Array.isArray(input)) return input; // Already an array/jsonb
+  if (Array.isArray(input)) return input; 
   if (typeof input === 'object') return Object.values(input);
   
   try {
     return JSON.parse(input);
   } catch (e) {
-    console.warn("Skipping bad JSON data:", input); // Logs the bad data so you can fix it later
+    console.warn("Skipping bad JSON data:", input); 
     return [];
   }
 };
 
 const formatProject = (data) => {
-  // Fix Tags: Handle various formats
   let formattedTags = [];
   const rawTags = data.Tags || data.tags;
   if (rawTags) {
@@ -42,7 +40,6 @@ const formatProject = (data) => {
     solution: data.Solution || data.solution,
     role: data.Role || data.role,
     
-    // Safely parse these fields using our helper
     achievements: (data.Achievements || data.achievements) 
       ? (typeof (data.Achievements || data.achievements) === 'string' 
           ? (data.Achievements || data.achievements).split('\n') 
