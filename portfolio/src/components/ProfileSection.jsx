@@ -40,18 +40,6 @@ const ProfileSection = () => {
     fetchProfileData();
   }, []);
 
-  const workExperienceData = [
-    { logo: eimsLogo, alt: 'EIMS Logo', company: 'EIMS', position: 'Graphic Designer' },
-    { logo: sprintsLogo, alt: 'Sprints Logo', company: 'Sprints', position: 'UX/UI Diploma' },
-    { logo: twentiesLogo, alt: 'Twenties Logo', company: 'Twenties', position: 'Content Creator' },
-    { logo: platformLogo, alt: 'Platform Logo', company: 'Platform', position: 'Graphic Diploma' },
-    { logo: amchamLogo, alt: 'Amcham Logo', company: 'Amcham', position: 'Graphic Designer' },
-    { logo: platterLogo, alt: 'Platter Logo', company: 'Platter', position: 'Graphic Designer' },
-    { logo: proartLogo, alt: 'ProArt Logo', company: 'ProArt', position: 'Graphic Designer' },
-    { logo: hermanasLogo, alt: 'Hermanas Logo', company: 'Hermanas', position: 'Account Manager' },
-    { logo: lemmetravelLogo, alt: 'LemmeTravel Logo', company: 'LemmeTravel', position: 'UX/UI Designer' },
-  ];
-
   return (
     <section className="profile-section">
       <div className="top-row-content">
