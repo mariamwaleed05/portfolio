@@ -1,20 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { supabase } from './../Supabase';
 
-import eimsLogo from '../imgs/1.png';
-import sprintsLogo from '../imgs/4.png';
-import twentiesLogo from '../imgs/6.png';
-import platformLogo from '../imgs/2.png';
-import amchamLogo from '../imgs/5.png';
-import platterLogo from '../imgs/7.png';
-import proartLogo from '../imgs/3.png';
-import hermanasLogo from '../imgs/8.png';
-import lemmetravelLogo from '../imgs/9.png';
 import arrow from '../icons/arrow.svg';
 
 const ProfileSection = () => {
   const [educationData, setEducationData] = useState([]);
   const [hobbiesData, setHobbiesData] = useState([]);
+  const [workExperienceData, setWorkExperienceData] = useState([]);
 
   useEffect(() => {
     const fetchProfileData = async () => {
@@ -23,18 +15,22 @@ const ProfileSection = () => {
         .select('*')
         .order('id', { ascending: true });
 
-      if (eduData) {
-        setEducationData(eduData);
-      }
+      if (eduData) setEducationData(eduData);
 
       const { data: hobbyData } = await supabase
         .from('About')
         .select('id, HobbyTitleEN, Hobby_Img')
         .not('HobbyTitleEN', 'is', null);
 
-      if (hobbyData) {
-        setHobbiesData(hobbyData);
-      }
+      if (hobbyData) setHobbiesData(hobbyData);
+
+      const { data: workData } = await supabase
+        .from('BrandsCarousel')
+        .select('id, Logo, AltText, Position')
+        .not('Position', 'is', null)
+        .order('id', { ascending: true });
+
+      if (workData) setWorkExperienceData(workData);
     };
 
     fetchProfileData();
@@ -75,18 +71,22 @@ const ProfileSection = () => {
       <div className="work-experience-section">
         <h2 className="section-title">Work Experience</h2>
         <div className="work-grid">
-          {workExperienceData.map((item, index) => (
-            <div className="work-item" key={index}>
-              <div className="logo-circle">
-                <img src={item.logo} alt={item.alt} />
+          {workExperienceData.length === 0 ? (
+            <p>Loading Experience...</p>
+          ) : (
+            workExperienceData.map((item) => (
+              <div className="work-item" key={item.id}>
+                <div className="logo-circle">
+                  <img src={item.Logo} alt={item.AltText} className="w-full h-full object-cover" />
+                </div>
+                <div className="details">
+                  <h3>{item.AltText}</h3>
+                  <p>{item.Position}</p>
+                </div>
+                <span className="arrow"><img src={arrow} alt="arrow" /></span>
               </div>
-              <div className="details">
-                <h3>{item.company}</h3>
-                <p>{item.position}</p>
-              </div>
-              <span className="arrow"><img src={arrow} alt="arrow"/></span>
-            </div>
-          ))}
+            ))
+          )}
         </div>
       </div>
     </section>
