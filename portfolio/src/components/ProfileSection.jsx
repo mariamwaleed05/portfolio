@@ -36,7 +36,9 @@ const ProfileSection = () => {
     fetchProfileData();
   }, []);
 
+  
   return (
+    
     <section className="profile-section">
       <div className="top-row-content">
         <div className="education-section">
