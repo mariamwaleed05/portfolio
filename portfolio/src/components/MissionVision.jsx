@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { supabase } from '../supabaseClient';
+import { supabase } from './../Supabase';
 
 const MissionVision = () => {
   const [content, setContent] = useState({ mission: '', vision: '' });
