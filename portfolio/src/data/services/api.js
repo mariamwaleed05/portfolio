@@ -18,6 +18,14 @@ const smartParse = (input) => {
 };
 
 const formatProject = (data) => {
+  const rawGallery = smartParse(data.Gallery || data.gallery);
+  const formattedGallery = rawGallery.map(item => {
+    if (typeof item === 'string') {
+      return { url: item, caption: '' };
+    }
+    return item;
+  });
+
   return {
     id: data.id,
     title: data.Title || data.title,
@@ -38,7 +46,7 @@ const formatProject = (data) => {
       : [],
     tags: smartParse(data.Tags || data.tags),
     technologies: smartParse(data.Technologies || data.technologies),
-    gallery: smartParse(data.Gallery || data.gallery),
+    gallery: formattedGallery,
     features: smartParse(data.KeyFeatures || data.keyFeatures),
     backLink: '/services'
   };
