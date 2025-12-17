@@ -1,29 +1,36 @@
-import React, { useEffect } from "react";
-
-import img1 from "../imgs/1.png";
-import img2 from "../imgs/2.png";
-import img3 from "../imgs/3.png";
-import img4 from "../imgs/4.png";
-import img5 from "../imgs/5.png";
-import img6 from "../imgs/6.png";
-import img7 from "../imgs/7.png";
-import img8 from "../imgs/8.png";
+import React, { useEffect, useState } from "react";
+import { supabase } from './../Supabase';
 
 const LogosTrack = () => {
-  const logos = [
-    { id: 1, text: "TIRED TIES", imgUrl: img1 },
-    { id: 2, text: "Platter", imgUrl: img2 },
-    { id: 3, text: "QA", imgUrl: img3 },
-    { id: 4, text: "S", imgUrl: img4 },
-    { id: 5, text: "303", imgUrl: img5 },
-    { id: 6, text: "Pixel Co", imgUrl: img6 },
-    { id: 7, text: "Zenith", imgUrl: img7 },
-    { id: 8, text: "Zenith", imgUrl: img8 },
-  ];
+  const [logos, setLogos] = useState([]);
 
   useEffect(() => {
+    const fetchBrands = async () => {
+      const { data } = await supabase
+        .from("BrandsCarousel")
+        .select("id, Logo, AltText")
+        .order("id", { ascending: true });
+
+      if (data) {
+        const formattedLogos = data.map((item) => ({
+          id: item.id,
+          text: item.AltText,
+          imgUrl: item.Logo,
+        }));
+        setLogos(formattedLogos);
+      }
+    };
+
+    fetchBrands();
+  }, []);
+
+  useEffect(() => {
+    if (logos.length === 0) return;
+
     const marqueeApp = document.getElementById("marqueeApp");
     if (!marqueeApp) return;
+
+    marqueeApp.innerHTML = "";
 
     function createLogoElement(logo) {
       const div = document.createElement("div");
@@ -45,7 +52,6 @@ const LogosTrack = () => {
       const track = document.createElement("div");
       track.className = "marquee-track";
 
-      // Repeat logos multiple times for the infinite scroll look
       for (let i = 0; i < 5; i++) {
         logos.forEach((logo) => {
           track.appendChild(createLogoElement(logo));
@@ -58,7 +64,7 @@ const LogosTrack = () => {
     initializeMarquee();
 
     return () => {
-      marqueeApp.innerHTML = "";
+      if (marqueeApp) marqueeApp.innerHTML = "";
     };
   }, [logos]);
 
