@@ -27,9 +27,7 @@ const RoutingApp = () => {
         <Route path='/Test' element={<Test />} />
 
         <Route path='/services' element={<Services />} />
-        
         <Route path='/services/:serviceType' element={<ServicePage />} /> 
-        
         <Route path="/project/:projectId" element={<ProjectDetailsPage />} />  
         
         <Route path="/Blog" element={<Blog />} />

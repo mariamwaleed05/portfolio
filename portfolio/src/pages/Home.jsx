@@ -17,7 +17,6 @@ import SoftwareBasket from '../components/SoftwaresBasket';
 import Footer from './../common/Footer';
 import PreLoader from './../common/PreLoader';
 import HangingCards from '../components/HangingCards';
-import ServicesSection from '../components/ServicesSection';
 import ServicesInHome from '../components/ServicesInHome';
 import CountUp from '../components/CountUp';
 
