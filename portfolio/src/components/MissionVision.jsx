@@ -1,6 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { supabase } from '../supabaseClient';
 
 const MissionVision = () => {
+  const [content, setContent] = useState({ mission: '', vision: '' });
+
+  useEffect(() => {
+    const fetchContent = async () => {
+      const { data } = await supabase
+        .from('About')
+        .select('MissionEN, VissionEN')
+        .limit(1)
+        .single();
+
+      if (data) {
+        setContent({
+          mission: data.MissionEN,
+          vision: data.VissionEN
+        });
+      }
+    };
+
+    fetchContent();
+  }, []);
+
   return (
     <>
       <h2 className="name-basket bbt">Vision & Mission</h2>
@@ -8,8 +30,7 @@ const MissionVision = () => {
         <h2 className="title-vision">Vision</h2>
         <div className="vision-box">
           <p className="text-vision">
-            My Vision Is To Build A Lasting Digital Presence That Inspires Collaboration, Innovation, And Continuous
-            Learning.
+            {content.vision || "Loading..."}
           </p>
         </div>
 
@@ -17,8 +38,7 @@ const MissionVision = () => {
 
         <div className="mission-box">
           <p className="text-mission">
-            My Mission Is To Showcase My Creative Journey Through A Well-Crafted, Interactive Portfolio That Reflects
-            My Skills & Design Philosophy. I Aim To Communicate Ideas With Clarity.
+            {content.mission || "Loading..."}
           </p>
         </div>
       </section>
