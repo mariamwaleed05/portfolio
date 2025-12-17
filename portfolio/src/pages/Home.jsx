@@ -89,7 +89,7 @@ const Home = () => {
 
 <Title  title="Services" className="maintitle" />
 <div class="flex up">
-<SubTitle  subtitle="UX/UI Designer & Graphic Designer." className="ssub" />
+<SubTitle  subtitle="All Services I offer." className="ssub" />
 <Link to="/Services"><h2 class="seeall">See All</h2></Link>
 </div>
 <ServicesInHome/>
