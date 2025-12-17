@@ -270,7 +270,7 @@ const ProjectDetails = ({ project, serviceColor = '#690600' }) => {
                             </div>
                         )}
 
-                        {activeSection === 'gallery' && (
+                      {activeSection === 'gallery' && (
                             <div className="content-section">
                                 <div className="gallery-grid">
                                     {project.gallery && project.gallery.map((item, i) => (
@@ -281,9 +281,13 @@ const ProjectDetails = ({ project, serviceColor = '#690600' }) => {
                                             
                                             {isVideo(item.url) ? (
                                                 <video 
-                                                    src={item.url} 
-                                                    controls 
-                                                    style={{ width: '100%', borderRadius: '12px', display: 'block' }}
+                                                    src={item.url}
+                                                    className="gallery-video"
+                                                    autoPlay
+                                                    muted
+                                                    loop
+                                                    playsInline
+                                                    controls
                                                 >
                                                     Your browser does not support the video tag.
                                                 </video>
