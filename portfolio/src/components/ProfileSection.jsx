@@ -83,7 +83,7 @@ const ProfileSection = () => {
                   <h3>{item.AltText}</h3>
                   <p>{item.Position}</p>
                 </div>
-                <span className="arrow"><img src={arrow} alt="arrow" /></span>
+                {/* <span className="arrow"><img src={arrow} alt="arrow" /></span> */}
               </div>
             ))
           )}
