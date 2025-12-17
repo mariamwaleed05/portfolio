@@ -27,7 +27,7 @@
     display: inline-flex;
     align-items: center;
     gap: 10px;
-                font-family: var(--fontunbounded);
+    font-family: var(--fontunbounded);
     color: #ffffff;
     text-decoration: none;
     font-size: 14px;
@@ -272,6 +272,7 @@
 .project-nav-sticky {
     position: sticky;
     top: 0;
+        font-family: var(--fontunbounded);
     z-index: 100;
     background: rgba(10, 10, 10, 0.95);
     backdrop-filter: blur(20px);
@@ -281,6 +282,7 @@
 
 .project-nav {
     max-width: 1400px;
+        font-family: var(--fontunbounded);
     margin: 0 auto;
     display: flex;
     gap: 8px;
@@ -292,6 +294,7 @@
     border: none;
     background: transparent;
     color: #888;
+        font-family: var(--fontunbounded);
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
@@ -309,6 +312,7 @@
 .nav-tab.active {
     color: #ffffff;
     background: var(--accent-color);
+        font-family: var(--fontunbounded);
 }
 
 .project-content {
