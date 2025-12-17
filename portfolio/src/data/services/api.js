@@ -1,31 +1,23 @@
 import { supabase } from '../../Supabase';
 
-const safeJsonParse = (input) => {
+const smartParse = (input) => {
   if (!input) return [];
-  if (Array.isArray(input)) return input; 
+  if (Array.isArray(input)) return input;
   if (typeof input === 'object') return Object.values(input);
-  
-  try {
-    return JSON.parse(input);
-  } catch (e) {
-    console.warn("Skipping bad JSON data:", input); 
-    return [];
+  if (typeof input === 'string') {
+    try {
+      return JSON.parse(input);
+    } catch (e) {
+      if (input.includes(',')) {
+        return input.split(',').map(item => item.trim());
+      }
+      return [input];
+    }
   }
+  return [];
 };
 
 const formatProject = (data) => {
-  let formattedTags = [];
-  const rawTags = data.Tags || data.tags;
-  if (rawTags) {
-    if (Array.isArray(rawTags)) {
-      formattedTags = rawTags;
-    } else if (typeof rawTags === 'object') {
-      formattedTags = Object.values(rawTags);
-    } else if (typeof rawTags === 'string') {
-        formattedTags = safeJsonParse(rawTags);
-    }
-  }
-
   return {
     id: data.id,
     title: data.Title || data.title,
@@ -39,18 +31,15 @@ const formatProject = (data) => {
     challenge: data.Challenge || data.challenge,
     solution: data.Solution || data.solution,
     role: data.Role || data.role,
-    
     achievements: (data.Achievements || data.achievements) 
       ? (typeof (data.Achievements || data.achievements) === 'string' 
           ? (data.Achievements || data.achievements).split('\n') 
           : (data.Achievements || data.achievements)) 
       : [],
-      
-    tags: formattedTags,
-    technologies: safeJsonParse(data.Technologies || data.technologies),
-    features: safeJsonParse(data.KeyFeatures || data.keyFeatures),
-    gallery: safeJsonParse(data.Gallery || data.gallery),
-    
+    tags: smartParse(data.Tags || data.tags),
+    technologies: smartParse(data.Technologies || data.technologies),
+    gallery: smartParse(data.Gallery || data.gallery),
+    features: smartParse(data.KeyFeatures || data.keyFeatures),
     backLink: '/services'
   };
 };
@@ -69,15 +58,21 @@ export const fetchProjectsByCategory = async (category) => {
 
   const dbCategory = categoryMap[category] || category;
 
-  console.log(`[API] Searching for Type: "${dbCategory}"`);
-
-  const { data, error } = await supabase
+  let { data, error } = await supabase
     .from('ProjectDetails')
     .select('*')
     .eq('Type', dbCategory);
 
+  if (!error && (!data || data.length === 0)) {
+     const { data: looseData, error: looseError } = await supabase
+       .from('ProjectDetails')
+       .select('*')
+       .ilike('Type', dbCategory);
+     if (!looseError && looseData.length > 0) data = looseData;
+  }
+
   if (error) {
-    console.error("[API] Supabase Error:", error);
+    console.error(error);
     throw error;
   }
 
