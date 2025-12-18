@@ -72,8 +72,26 @@ const Contact = () => {
         if (!validateForm()) return;
         
         setIsSubmitting(true);
-        
-        setTimeout(() => {
+
+        try {
+            const { error } = await supabase
+                .from('ContactForm')
+                .insert([
+                    {
+                        FullName: formData.name,
+                        Email: formData.email,
+                        Phone: formData.phone,
+                        Subject: formData.subject,
+                        ServiceNeeded: formData.service,
+                        Timeline: formData.timeline,
+                        Message: formData.message
+                    }
+                ]);
+
+            if (error) {
+                throw error;
+            }
+
             setIsSubmitting(false);
             setIsSubmitted(true);
             setTimeout(() => {
@@ -88,7 +106,12 @@ const Contact = () => {
                     timeline: ''
                 });
             }, 3000);
-        }, 2000);
+
+        } catch (error) {
+            console.error("Supabase Error:", error);
+            alert("Error sending message: " + error.message); 
+            setIsSubmitting(false);
+        }
     };
 
     if (loadingInfo) return <PreLoader />;

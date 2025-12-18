@@ -58,9 +58,9 @@ export const fetchProjectsByCategory = async (category) => {
     'UX': 'UX/UI',
     'GraphicDesign': 'Graphic Design',
     'ContentCreation': 'Content Creation',
-    'WebDevelopment': 'Web Development',
+    'WebDevelopment': 'Coding',
     'Photography': 'Photography',
-    'Modeling': 'Modeling',
+    'Modeling': '3D Modeling',
     'MotionGraphics': 'Motion Graphics'
   };
 
