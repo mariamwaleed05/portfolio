@@ -16,6 +16,7 @@ const Services = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        
         const fetchServices = async () => {
             try {
                 const { data, error } = await supabase
@@ -31,6 +32,7 @@ const Services = () => {
             } finally {
                 setLoading(false);
             }
+            
         };
 
         fetchServices();

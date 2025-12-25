@@ -142,11 +142,11 @@ const Contact = () => {
                         </div>
                         
                         <h1 className="contact-title">
-                            {contactInfo?.Title || "Let's Get In Touch"}
+                            {contactInfo?.Title}
                         </h1>
                         
                         <p className="contact-subtitle">
-                            {contactInfo?.Bio || "If you're looking for a creative UX/UI Designer who blends strategy with design, let's create something meaningful together."}
+                            {contactInfo?.Bio }
                         </p>
                         
                         <div className="title-underline-contact">
